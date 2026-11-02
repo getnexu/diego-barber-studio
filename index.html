@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A0908">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" as="image" href="img/hero-estudio.webp">
+<title>Diego Barber Studio · Barbería en Quilicura</title>
+<meta name="description" content="Diego Barber Studio, barbería en Quilicura, Santiago. Degradados, cortes clásicos, barba, cejas y visos. Revisa precios, cotiza y reserva tu hora por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Diego Barber Studio · Barbería en Quilicura">
+<meta property="og:description" content="Degradados de precisión, diseños, barba y visos. Cotiza y reserva tu hora por WhatsApp.">
+<meta property="og:locale" content="es_CL">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HairSalon", "name": "Diego Barber Studio", "description": "Barbería en Quilicura, Santiago. Degradados, cortes clásicos, barba, cejas y visos.", "telephone": "+56982036191", "priceRange": "$2.000 - $50.000", "openingHours": "Mo-Su", "address": {"@type": "PostalAddress", "addressLocality": "Quilicura", "addressRegion": "Región Metropolitana", "addressCountry": "CL"}, "founder": {"@type": "Person", "name": "Diego Morales", "jobTitle": "Barbero profesional"}, "sameAs": ["https://www.instagram.com/diegobarbeerr19/", "https://diegobarberstudio19.setmore.com/diego"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corte degradado"}, "price": "12000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corte clásico"}, "price": "10000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corte + barba"}, "price": "16000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Visos"}, "price": "50000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Barba sola"}, "price": "6000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Solo cejas"}, "price": "2000", "priceCurrency": "CLP"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Pinyon+Script&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: estudio de noche — poste 3D en latón y cristal a la derecha del hero, carta de precios como placas de oro inclinables, mármol negro con vetas doradas */
+:root{
+  color-scheme:dark;
+  --bg:#0A0908; --surface:#13110E; --surface-2:#1A1713; --line:rgba(212,175,90,.2);
+  --ink:#EFE8D8; --ink-2:#A89F8C; --gold:#D4AF5A; --gold-hi:#F3DE9C; --gold-lo:#8A6A22; --on-gold:#17120A;
+  --wa:#25B864; --on-wa:#04150A;
+  --gold-metal:linear-gradient(175deg,#FBEFC4 0%,#E2C377 38%,#9C7A2C 52%,#D9B867 70%,#F6E3A6 100%);
+  --display:"Cinzel","Trajan Pro",Georgia,serif;
+  --script:"Pinyon Script","Snell Roundhand",cursive;
+  --body:"Jost","Avenir Next","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;font-weight:400;margin:0;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,36px)}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:.02em}
+.metal{background:var(--gold-metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.72rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
+.script{font-family:var(--script);font-weight:400;letter-spacing:0;text-transform:none}
+
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:50px;padding:.8rem 1.5rem;border-radius:2px;font-family:var(--body);font-weight:500;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;overflow:hidden;transition:transform .25s ease, box-shadow .25s ease}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-gold{background:var(--gold-metal);color:var(--on-gold);box-shadow:0 10px 30px -12px rgba(212,175,90,.6)}
+.btn-gold::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s ease}
+.btn-gold:hover::after{transform:translateX(120%)}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-line:hover{box-shadow:inset 0 0 0 1px var(--gold);color:var(--gold-hi)}
+.btn-wa{background:var(--wa);color:var(--on-wa)}
+.btn-wa:hover{transform:translateY(-2px)}
+
+/* Nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(10,9,8,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:70px}
+.brand{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+.mono{font-family:var(--display);font-weight:800;font-size:1.55rem;line-height:1;letter-spacing:-.06em}
+.brand small{display:block;font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-2)}
+.brand b{font-family:var(--script);font-weight:400;font-size:1.5rem;line-height:1}
+.nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase}
+.nav ul a{text-decoration:none;color:var(--ink-2);transition:color .2s}
+.nav ul a:hover{color:var(--gold-hi)}
+.nav .btn{min-height:42px;padding:.55rem 1.1rem;font-size:.72rem}
+@media (max-width:860px){.nav ul{display:none}}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 70% at 78% 45%,rgba(212,175,90,.16),transparent 70%),
+  radial-gradient(40% 50% at 10% 100%,rgba(212,175,90,.07),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(16px,4vw,48px);align-items:center;padding-block:clamp(36px,5vw,68px)}
+.hero-logo{display:block;width:clamp(170px,18vw,250px);height:auto;margin:0 0 1.3rem -6px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.6))}
+.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-media img{filter:saturate(.9);object-position:50% 42%}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,9,8,.95) 0%,rgba(10,9,8,.78) 40%,rgba(10,9,8,.25) 75%,rgba(10,9,8,.15) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 35%)}
+@media (min-width:821px){
+  .hero-media img,.hero-media video{left:auto;right:0;width:60%;object-position:30% 45%}
+  .hero-media::after{background:linear-gradient(90deg,var(--bg) 0%,var(--bg) 40%,rgba(10,9,8,.55) 52%,rgba(10,9,8,.12) 72%,rgba(10,9,8,.2) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 30%)}
+}
+@media (max-width:820px){.hero-media::after{background:linear-gradient(180deg,rgba(10,9,8,.55) 0%,rgba(10,9,8,.85) 45%,var(--bg) 100%)}}
+.hero::before{z-index:1}
+.hero .wrap{z-index:2}
+.nav-mono{height:44px;width:auto;display:block}
+.hero h1{font-size:clamp(2.3rem,5.2vw,4.4rem);font-weight:700;text-transform:uppercase}
+.hero h1 .script{display:block;font-size:.95em;text-transform:none;line-height:1.1;margin-top:.15em}
+.lede{color:var(--ink-2);max-width:44ch;margin:1.2rem 0 1.8rem;font-size:1.06rem;font-weight:300}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.facts{display:flex;flex-wrap:wrap;gap:1.6rem 2.6rem;margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.facts b{display:block;font-family:var(--display);font-size:1.15rem;letter-spacing:.06em;color:var(--ink);font-weight:600;margin-bottom:.15rem}
+.stage{position:relative;height:clamp(320px,34vw,440px);min-width:0;width:100%}
+.q-head{align-items:center;margin-bottom:2rem}
+.q-head .q-lede{color:var(--ink-2);font-weight:300;max-width:44ch;margin:1.1rem 0 0;justify-self:start}
+.hero .wrap{min-height:clamp(560px,72vh,760px)}
+#pole3d{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+#pole3d:active{cursor:grabbing}
+.stage .hint{position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap;display:flex;align-items:center;gap:.5rem;pointer-events:none}
+.stage .hint svg{width:16px;height:16px}
+.pole-css{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:90px;height:78%;border-radius:999px;background:repeating-linear-gradient(-40deg,#0b0b0b 0 18px,#f4f1ea 18px 36px,#C9A24A 36px 54px,#f4f1ea 54px 72px);box-shadow:inset -16px 0 26px rgba(0,0,0,.5),0 0 0 6px #b8964a}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr;min-height:0}.stage{height:300px}}
+
+/* Marquesina */
+.band{border-bottom:1px solid var(--line);overflow:hidden;padding-block:1.1rem;background:var(--surface)}
+.band .track{display:flex;gap:3rem;width:max-content;animation:slide 38s linear infinite;font-family:var(--display);font-size:1.05rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-2)}
+.band .track span{display:inline-flex;align-items:center;gap:3rem;white-space:nowrap}
+.band .track span::after{content:"";width:7px;height:7px;transform:rotate(45deg);background:var(--gold)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding-block:clamp(64px,9vw,120px)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem 3rem;align-items:end;margin-bottom:3rem}
+.head h2{font-size:clamp(2.1rem,4.6vw,3.6rem);text-transform:uppercase;margin-top:.8rem}
+.head p{color:var(--ink-2);max-width:46ch;margin:0;font-weight:300;justify-self:end}
+@media (max-width:760px){.head{grid-template-columns:1fr}.head p{justify-self:start}}
+
+/* Precios: placas 3D */
+.plates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;perspective:1200px}
+@media (max-width:980px){.plates{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.plates{grid-template-columns:1fr}}
+.plate{--rx:0deg;--ry:0deg;--gx:50%;--gy:0%;position:relative;padding:1.8rem 1.6rem 1.6rem;background:linear-gradient(160deg,var(--surface-2),var(--surface) 60%);border:1px solid var(--line);border-radius:4px;transform:rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.8,.2,1), border-color .3s;min-height:228px;display:flex;flex-direction:column}
+.plate.live{transition:transform .08s linear, border-color .3s}
+.plate:hover{border-color:rgba(212,175,90,.5)}
+.plate::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(420px circle at var(--gx) var(--gy),rgba(243,222,156,.13),transparent 45%);opacity:0;transition:opacity .3s}
+.plate:hover::after{opacity:1}
+.plate .ico{width:46px;height:46px;color:var(--gold);margin-bottom:1.2rem}
+.plate h3{font-size:1.25rem;text-transform:uppercase;}
+.plate p{color:var(--ink-2);font-size:.9rem;margin:.45rem 0 0;font-weight:300;}
+.plate .price{margin-top:auto;padding-top:1.3rem;display:flex;align-items:baseline;gap:.5rem;}
+.plate .price small{font-family:var(--display);font-size:.8rem;color:var(--ink-2);letter-spacing:.1em}
+.plate .price strong{font-family:var(--display);font-size:2.3rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.plate.feat{border-color:rgba(212,175,90,.45)}
+.plate .tag{position:absolute;top:1.1rem;right:1.1rem;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--on-gold);background:var(--gold-metal);padding:.3rem .55rem;border-radius:2px;}
+
+/* Cotizador */
+#cotizador{background:var(--surface);border-block:1px solid var(--line)}
+.quote{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:900px){.quote{grid-template-columns:1fr}}
+fieldset{border:0;margin:0 0 2.2rem;padding:0;min-width:0}
+legend{font-family:var(--display);font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;color:var(--ink);padding:0}
+legend span{color:var(--gold);margin-right:.6rem}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.7rem}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;z-index:1}
+.opt input:disabled{cursor:not-allowed}
+.opt label{display:flex;flex-direction:column;gap:.2rem;min-height:70px;padding:.9rem 1rem;border:1px solid var(--line);border-radius:3px;background:var(--bg);transition:border-color .2s,background .2s,opacity .2s}
+.opt .t{display:flex;justify-content:space-between;gap:.6rem;font-weight:500;font-size:.95rem}
+.opt .t em{font-style:normal;font-variant-numeric:tabular-nums;color:var(--gold);white-space:nowrap}
+.opt .s{font-size:.78rem;color:var(--ink-2);font-weight:300}
+.opt input:checked + label{border-color:var(--gold);background:linear-gradient(160deg,rgba(212,175,90,.14),rgba(212,175,90,.03))}
+.opt input:focus-visible + label{outline:2px solid var(--gold-hi);outline-offset:2px}
+.opt input:disabled + label{opacity:.45}
+.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media (max-width:600px){.fields{grid-template-columns:1fr}}
+.field label{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:.4rem}
+.field input,.field select{width:100%;min-height:50px;padding:.6rem .85rem;border-radius:3px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:.95rem}
+.field input:focus,.field select:focus{border-color:var(--gold);outline:none}
+
+.ticket{position:sticky;top:calc(env(safe-area-inset-top,0px) + 92px);padding:2rem 1.8rem;border:1px solid rgba(212,175,90,.4);border-radius:4px;background:
+  linear-gradient(180deg,rgba(212,175,90,.08),transparent 40%),var(--bg)}
+.ticket::before{content:"";position:absolute;inset:6px;border:1px solid var(--line);border-radius:2px;pointer-events:none}
+.ticket{position:sticky}
+.ticket h3{font-size:1.1rem;letter-spacing:.24em;text-transform:uppercase;text-align:center}
+.ticket .sub{text-align:center;font-family:var(--script);font-size:1.7rem;color:var(--gold);margin:.1rem 0 1.2rem;line-height:1}
+.ticket ul{list-style:none;margin:0;padding:0;font-size:.92rem}
+.ticket li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px dashed var(--line);font-variant-numeric:tabular-nums}
+.ticket li.inc span:last-child{color:var(--ink-2);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
+.ticket li.empty{color:var(--ink-2);border:0;justify-content:center}
+.total{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:1.4rem 0 1.4rem}
+.total span{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-2)}
+.total output{font-family:var(--display);font-size:clamp(2.2rem,5vw,2.9rem);font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.total output small{font-size:.4em;letter-spacing:.12em;margin-right:.3em;vertical-align:middle}
+.ticket .btn{width:100%}
+.ticket .alt{display:block;text-align:center;margin-top:.9rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.ticket .alt a{color:var(--gold-hi)}
+.err{color:#F0A497;font-size:.85rem;text-align:center;margin:.7rem 0 0}
+
+/* Estilos */
+.styles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media (max-width:900px){.styles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.style{position:relative;aspect-ratio:3/4;max-width:100%;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--surface) var(--marble,none) center/cover;display:flex;flex-direction:column;justify-content:flex-end;padding:1.3rem;isolation:isolate}
+.style::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 35%,rgba(10,9,8,.92))}
+.style img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s ease}
+.style:hover img{transform:scale(1.05)}
+.style .n{font-family:var(--display);font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:700;text-transform:uppercase;line-height:1.05}
+.style .n .script{display:block;font-size:1.25em;text-transform:none}
+.style p{margin:.4rem 0 0;font-size:.82rem;color:var(--ink-2);font-weight:300}
+
+/* Galería 3D */
+#trabajos{overflow:hidden}
+.ring{--cw:clamp(176px,23vw,270px);position:relative;height:calc(var(--cw) * 318 / 260 + 64px);perspective:1500px;perspective-origin:50% 40%;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.ring:active{cursor:grabbing}
+.ring::after{content:"";position:absolute;left:50%;bottom:0;width:min(760px,90%);height:70px;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(212,175,90,.28),transparent 70%);pointer-events:none}
+.spin{position:absolute;left:50%;top:10px;width:var(--cw);height:calc(var(--cw) * 318 / 260);margin-left:calc(var(--cw) / -2);transform-style:preserve-3d}
+.card3d{position:absolute;inset:0;margin:0;border-radius:6px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(212,175,90,.35);background:var(--surface);box-shadow:0 30px 50px -25px rgba(0,0,0,.9)}
+.card3d img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.card3d figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.2rem .9rem .8rem;background:linear-gradient(180deg,transparent,rgba(10,9,8,.92));font-family:var(--display);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi);opacity:0;transition:opacity .4s}
+.card3d.front figcaption{opacity:1}
+.card3d img{object-position:50% 30%}
+.card3d figcaption small{display:block;font-family:var(--body);font-size:.62rem;letter-spacing:.22em;color:var(--ink-2);margin-bottom:.25rem}
+.ring.flat{cursor:default}
+.ring.flat .card3d{cursor:pointer;transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .6s}
+.ring.flat .card3d.front{cursor:default}
+.spin.swap{animation:swapIn .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes swapIn{from{opacity:.001;filter:blur(6px)}to{opacity:1;filter:none}}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:-1rem 0 2.2rem}
+.chip{min-height:44px;padding:.5rem 1.1rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink-2);font:inherit;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,color .2s}
+.chip span{margin-left:.55rem;color:var(--gold);font-variant-numeric:tabular-nums}
+.chip:hover{border-color:var(--gold);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--gold-metal);color:var(--on-gold);border-color:transparent}
+.chip[aria-pressed="true"] span{color:var(--on-gold)}
+.ring-ctrl button:disabled{opacity:.3;cursor:default}
+.ring-ctrl{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:1.6rem}
+.ring-ctrl button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--gold);cursor:pointer;display:grid;place-items:center;transition:border-color .2s,color .2s}
+.ring-ctrl button:hover{border-color:var(--gold);color:var(--gold-hi)}
+.ring-ctrl button svg{width:20px;height:20px}
+.ring-ctrl span{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);min-width:16ch;text-align:center}
+.extra-note{text-align:center;margin:1.8rem auto 0;color:var(--ink-2);font-weight:300;max-width:52ch}
+.extra-note a{color:var(--gold-hi)}
+
+/* Cita */
+/* Catálogo: filtros, agregar al cotizador, aviso */
+.cat-tabs{justify-content:flex-start;margin:-1rem 0 2rem}
+.plate .foot{margin-top:auto;padding-top:1.3rem;display:flex;align-items:flex-end;justify-content:space-between;gap:.8rem;flex-wrap:wrap}
+.plate .foot .price{margin:0;padding:0}
+.add{position:relative;z-index:1;min-height:44px;padding:.5rem 1rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--gold-hi);font:inherit;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;white-space:nowrap;transition:border-color .2s,background .2s}
+.add:hover{border-color:var(--gold);background:rgba(212,175,90,.08)}
+.add svg{width:14px;height:14px}
+.plate[hidden]{display:none}
+.toast{position:fixed;left:50%;bottom:calc(164px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:1rem;width:max-content;max-width:calc(100vw - 32px);padding:.85rem 1.1rem .85rem 1.2rem;border:1px solid rgba(212,175,90,.45);border-radius:4px;background:var(--surface-2);box-shadow:0 18px 40px -12px rgba(0,0,0,.8);font-size:.9rem;transform:translate(-50%,16px);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+.toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.toast a{color:var(--gold-hi);white-space:nowrap;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase}
+.ticket.pulse{animation:pulse 1s ease-out}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(212,175,90,.55)}100%{box-shadow:0 0 0 22px rgba(212,175,90,0)}}
+.ticket .pay{margin-top:.6rem}
+
+/* Nosotros */
+#nosotros{position:relative;isolation:isolate;border-block:1px solid var(--line)}
+#nosotros::before{content:"";position:absolute;inset:0;background:var(--marble,none) center/cover;opacity:.4;z-index:-1}
+.about{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(36px,6vw,96px);align-items:center}
+.portrait{--rx:0deg;--ry:0deg;position:relative;margin:0 18px 18px 0;max-width:460px;width:100%;justify-self:center;transform:perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.portrait.live{transition:transform .08s linear}
+.portrait::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--gold);border-radius:4px;z-index:-1}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:4px;border:1px solid rgba(212,175,90,.35);box-shadow:0 40px 60px -30px rgba(0,0,0,.9)}
+.portrait figcaption{position:absolute;left:0;right:0;bottom:0;padding:3rem 1.4rem 1.2rem;border-radius:0 0 4px 4px;background:linear-gradient(180deg,transparent,rgba(10,9,8,.9))}
+.portrait figcaption b{display:block;font-family:var(--script);font-weight:400;font-size:2.2rem;line-height:1}
+.portrait figcaption span{display:block;margin-top:.35rem;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-2)}
+.about blockquote{margin:1.1rem 0 1.6rem;font-family:var(--display);font-size:clamp(1.8rem,3.8vw,3.1rem);font-weight:600;line-height:1.15;text-transform:uppercase;text-wrap:balance}
+.about cite{display:block;margin-top:1rem;font-style:normal;font-family:var(--script);font-size:2rem;color:var(--gold)}
+.about .copy > p{color:var(--ink-2);font-weight:300;max-width:52ch;margin:0 0 1.8rem;font-size:1.02rem}
+.pillars{border-top:1px solid var(--line)}
+.pillars div{position:relative;padding:1.1rem 0 1.1rem 1.7rem;border-bottom:1px solid var(--line)}
+.pillars div::before{content:"";position:absolute;left:2px;top:1.55rem;width:8px;height:8px;transform:rotate(45deg);background:var(--gold)}
+.pillars h3{font-size:.95rem;letter-spacing:.14em;text-transform:uppercase}
+.pillars p{margin:.25rem 0 0;color:var(--ink-2);font-size:.9rem;font-weight:300}
+@media (max-width:860px){.about{grid-template-columns:1fr}.portrait{max-width:380px}}
+
+/* El estudio: mosaico */
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,230px);gap:clamp(8px,1.2vw,14px);perspective:1400px}
+.tile{--rx:0deg;--ry:0deg;position:relative;margin:0;overflow:hidden;border-radius:4px;border:1px solid var(--line);background:var(--surface);transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .6s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.tile.live{transition:transform .08s linear,border-color .3s}
+.tile:hover{border-color:rgba(212,175,90,.55)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.tile:hover img{transform:scale(1.06)}
+.tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.4rem 1rem .9rem;background:linear-gradient(180deg,transparent,rgba(10,9,8,.88));font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-hi)}
+.tile.t1{grid-column:1/3;grid-row:1/3}
+.tile.t2{grid-column:3/5;grid-row:1/2}
+.tile.t3{grid-column:3/4;grid-row:2/4}
+.tile.t4{grid-column:4/5;grid-row:2/4}
+.tile.t5{grid-column:1/3;grid-row:3/4}
+.tile.t2 img{object-position:50% 35%}
+.tile.t5 img{object-position:50% 70%}
+@media (max-width:700px){.bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(130px,40vw,190px)}
+  .tile.t1{grid-column:1/3;grid-row:auto/span 2}.tile.t2{grid-column:1/3;grid-row:auto}.tile.t3,.tile.t4{grid-column:auto;grid-row:auto/span 2}.tile.t5{grid-column:1/3;grid-row:auto}}
+
+/* Preguntas frecuentes */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:44px;padding:1.25rem .2rem;font-family:var(--display);font-size:clamp(1rem,2vw,1.2rem);font-weight:600;letter-spacing:.03em;transition:color .2s}
+.faq summary:hover{color:var(--gold-hi)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:10px;height:10px;flex:none;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:translateY(-3px) rotate(45deg);transition:transform .3s}
+.faq details[open] summary::after{transform:translateY(2px) rotate(-135deg)}
+.faq details p{margin:0 0 1.4rem;padding-inline:.2rem;color:var(--ink-2);font-weight:300;max-width:64ch}
+.faq a,.head p a{color:var(--gold-hi)}
+
+/* Visítanos */
+.visit{display:grid;grid-template-columns:minmax(0,.9fr) repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.visit .studio{padding:0;min-height:260px}
+.visit .studio img{width:100%;height:100%;object-fit:cover;object-position:35% 40%;display:block}
+.visit > div{padding:2rem 1.8rem;min-width:0}
+.visit > div + div{border-left:1px solid var(--line)}
+.visit h3{font-size:.95rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+.visit p{margin:0;color:var(--ink-2);font-weight:300}
+.visit p strong{color:var(--ink);font-weight:500}
+.visit .row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+.visit .btn{min-height:44px;font-size:.72rem;padding:.6rem 1rem}
+.mono-num{user-select:all;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+@media (max-width:1000px) and (min-width:861px){.visit{grid-template-columns:repeat(3,minmax(0,1fr))}.visit .studio{grid-column:1/-1;aspect-ratio:16/7;min-height:0}.visit > div.studio + div{border-left:0}}
+@media (max-width:860px){.visit{grid-template-columns:1fr}.visit .studio{aspect-ratio:4/3;min-height:0}.visit > div + div{border-left:0;border-top:1px solid var(--line)}}
+
+footer{border-top:1px solid var(--line);padding-block:2.2rem;font-size:.78rem;color:var(--ink-2);letter-spacing:.06em}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem}
+footer .brand b{font-size:1.3rem}
+
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;width:62px;height:62px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.6),0 0 0 3px rgba(212,175,90,.55);text-decoration:none;transition:transform .25s}
+.fab:hover{transform:scale(1.07) rotate(-6deg)}
+.fab svg{width:31px;height:31px}
+.fab-ig{bottom:calc(92px + env(safe-area-inset-bottom,0px));width:54px;height:54px;right:max(20px,calc(env(safe-area-inset-right,0px) + 4px));background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);color:#fff}
+.fab-ig svg{width:27px;height:27px}
+
+.reveal{transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.reveal.pre{transform:translateY(28px)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .band .track{animation:none}
+  .reveal.pre{transform:none}
+  .plate,.btn,.btn-gold::after,.style img{transition:none}
+}
+</style>
+<style>[hidden]{display:none!important}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px)}</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBEFC4"/><stop offset=".45" stop-color="#D9B867"/><stop offset=".55" stop-color="#9C7A2C"/><stop offset="1" stop-color="#F3DE9C"/>
+    </linearGradient>
+  </defs>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-drag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8 3 12l4 4M17 8l4 4-4 4M3 12h18"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor"/></symbol>
+  <!-- Íconos de servicio (trazo) -->
+  <symbol id="s-fade" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 30c-2-9 3-18 12-18 7 0 11 5 11 11v4"/><path d="M14 30c0 6 4 11 10 11"/><path d="M15 25h9M15 21h11M16 17h12" opacity=".9"/><path d="M37 27c-1 7-5 12-11 14"/></symbol>
+  <symbol id="s-sci" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="13" cy="35" r="5"/><circle cx="25" cy="38" r="5"/><path d="M16.5 31.5 38 8M21.5 34 32 11"/></symbol>
+  <symbol id="s-beard" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 14c0 16 5 26 14 26s14-10 14-26"/><path d="M10 22c4 3 9 2 14-1 5 3 10 4 14 1"/><path d="M19 29c3 1.6 7 1.6 10 0"/></symbol>
+  <symbol id="s-combo" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 34 39 14"/><path d="M9 34l5 3 25-17-2-3"/><path d="M30 34h10M30 38h7"/></symbol>
+  <symbol id="s-visos" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M24 6v8M24 34v8M6 24h8M34 24h8M11 11l5 5M32 32l5 5M37 11l-5 5M16 32l-5 5"/><circle cx="24" cy="24" r="4"/></symbol>
+  <symbol id="s-brow" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 18c8-6 22-7 32-1"/><path d="M8 30c5-6 11-8 16-8s11 2 16 8c-5 6-11 8-16 8s-11-2-16-8Z"/><circle cx="24" cy="30" r="4"/></symbol>
+</svg>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Diego Barber Studio, inicio">
+      <img class="nav-mono js-mono" alt="" width="29" height="44">
+      <span><b class="metal">Diego Barber</b><small>Studio</small></span>
+    </a>
+    <ul>
+      <li><a href="#precios">Servicios</a></li>
+      <li><a href="#trabajos">Galería</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+      <li><a href="#visitanos">Contacto</a></li>
+    </ul>
+    <a class="btn btn-gold js-book" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cal"/></svg>Reservar</a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="hero-media" aria-hidden="true">
+    <img id="heroImg" alt="">
+    <video id="heroVideo" muted loop playsinline preload="metadata" hidden></video>
+  </div>
+  <div class="wrap">
+    <div class="reveal">
+      <img class="hero-logo" id="heroLogo" alt="Diego Barber. Barbería, estilo, precisión" width="640" height="541">
+      <h1><span class="metal">Transformo tu imagen</span><span class="script metal">y elevo tu confianza</span></h1>
+      <p class="lede">Degradados de precisión, cortes clásicos, barba perfilada y visos. Atiende Diego Morales, barbero profesional, de lunes a domingo.</p>
+      <div class="actions">
+        <a class="btn btn-gold js-book" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cal"/></svg>Reservar hora</a>
+        <a class="btn btn-line" href="#cotizador">Cotizar mi corte</a>
+      </div>
+      <div class="facts">
+        <div><b>Lun a Dom</b>Atención</div>
+        <div><b>Desde $2.000</b>Servicios</div>
+        <div><b>Quilicura</b>Santiago</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="band" aria-hidden="true"><div class="track" id="track"></div></div>
+
+<main>
+<section id="precios">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><p class="eyebrow">Catálogo</p><h2><span class="metal">Servicios</span></h2></div>
+      <p>Precios en pesos chilenos. Agrega lo que quieras al cotizador y envía tu pedido armado por WhatsApp.</p>
+    </div>
+    <div class="chips cat-tabs" id="catTabs" role="group" aria-label="Filtrar servicios por categoría"></div>
+    <div class="plates" id="plates"></div>
+  </div>
+</section>
+
+<section id="cotizador">
+  <div class="wrap">
+    <div class="head q-head reveal">
+      <div><p class="eyebrow">Cotizador</p><h2><span class="metal">Arma tu visita</span></h2>
+        <p class="q-lede">Elige tu corte y los adicionales. El total se calcula al momento y lo envías armado por WhatsApp para confirmar tu hora.</p></div>
+      <div class="stage" aria-label="Poste de barbería en 3D. Arrástralo para girarlo.">
+        <canvas id="pole3d" aria-hidden="true"></canvas>
+        <div class="pole-css" id="poleFallback" hidden></div>
+        <p class="hint"><svg aria-hidden="true"><use href="#i-drag"/></svg>Arrastra para girar</p>
+    </div>
+    </div>
+    <form class="quote" id="quote" novalidate>
+      <div>
+        <fieldset>
+          <legend><span>I</span>Corte</legend>
+          <div class="opts" id="opts-corte"></div>
+        </fieldset>
+        <fieldset>
+          <legend><span>II</span>Adicionales</legend>
+          <div class="opts" id="opts-extra"></div>
+        </fieldset>
+        <fieldset>
+          <legend><span>III</span>Tus datos</legend>
+          <div class="fields">
+            <div class="field"><label for="nombre">Nombre</label><input id="nombre" autocomplete="given-name" placeholder="Ej: Benjamín"></div>
+            <div class="field"><label for="fecha">Fecha</label><input id="fecha" type="date"></div>
+            <div class="field"><label for="franja">Horario</label>
+              <select id="franja"><option>Mañana</option><option selected>Tarde</option><option>Noche</option></select>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <aside class="ticket" aria-live="polite">
+        <h3>Tu cotización</h3>
+        <p class="sub">Diego Barber</p>
+        <ul id="lines"></ul>
+        <div class="total"><span>Total</span><output id="total" class="metal" for="quote">$0</output></div>
+        <button class="btn btn-wa" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp</button>
+        <a class="btn btn-line pay" id="payBtn" href="#" target="_blank" rel="noopener" hidden>Pagar abono con Mercado Pago</a>
+        <p class="err" id="err" hidden>Elige al menos un servicio para cotizar.</p>
+        <span class="alt">¿Prefieres agenda online? <a class="js-book" href="#" target="_blank" rel="noopener">Reserva aquí</a></span>
+      </aside>
+    </form>
+  </div>
+</section>
+
+<section id="trabajos">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><p class="eyebrow">Trabajos recientes</p><h2><span class="metal">Galería</span></h2></div>
+      <p>Cortes hechos en el estudio. Filtra por estilo y arrastra la galería para girarla.</p>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filtrar trabajos por categoría"></div>
+  </div>
+  <div class="ring" id="ring" tabindex="0" aria-roledescription="carrusel" aria-label="Galería de cortes de Diego Barber">
+    <div class="spin" id="spin"></div>
+  </div>
+  <div class="wrap">
+    <div class="ring-ctrl">
+      <button type="button" id="prev" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <span id="ringLabel" aria-live="polite"></span>
+      <button type="button" id="next" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <p class="extra-note">¿Quieres visos o color de fantasía? <a class="js-wa" href="#" target="_blank" rel="noopener">Cotízalos por WhatsApp</a> o mira más en <a href="https://www.instagram.com/diegobarbeerr19/" target="_blank" rel="noopener">@diegobarbeerr19</a>.</p>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap about">
+    <figure class="portrait reveal" id="portrait">
+      <img id="diegoImg" alt="Diego Morales, barbero de Diego Barber Studio, con su máquina de cortar" width="800" height="1000">
+      <figcaption><b class="metal">Diego Morales</b><span>Barbero profesional</span></figcaption>
+    </figure>
+    <div class="copy reveal">
+      <p class="eyebrow">Nosotros</p>
+      <blockquote><span class="metal">Cuando se van por precio, vuelven por calidad.</span></blockquote>
+      <p>Diego Morales es barbero profesional y atiende en su estudio de Quilicura de lunes a domingo. Su especialidad son los degradados, del low al high fade, con diseños de líneas a pedido. La idea es una sola: transformar tu imagen y elevar tu confianza.</p>
+      <div class="pillars">
+        <div><h3>Degradados de precisión</h3><p>Mid, burst y taper fade con transiciones limpias.</p></div>
+        <div><h3>Diseño incluido</h3><p>El corte degradado trae perfilado de cejas y una línea de diseño a elección.</p></div>
+        <div><h3>Todos los días</h3><p>Atención de lunes a domingo, con agenda online.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="estudio">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><p class="eyebrow">Quilicura</p><h2><span class="metal">El estudio</span></h2></div>
+      <p>Luces hexagonales, mármol negro y cada herramienta en su lugar. Así te recibe Diego.</p>
+    </div>
+    <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<section id="preguntas">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><p class="eyebrow">Preguntas frecuentes</p><h2><span class="metal">Antes de venir</span></h2></div>
+      <p>Lo que más le preguntan a Diego. ¿Te queda otra duda? <a class="js-wa" href="#" target="_blank" rel="noopener">Escríbele por WhatsApp</a>.</p>
+    </div>
+    <div class="faq reveal">
+      <details open><summary>¿Tengo que reservar hora?</summary><p>Sí, lo mejor es reservar. Puedes agendar online cuando te acomode en la <a class="js-book" href="#" target="_blank" rel="noopener">agenda de Diego</a> o escribirle por WhatsApp.</p></details>
+      <details><summary>¿Qué incluye el corte degradado?</summary><p>Incluye perfilado de cejas y una línea de diseño a elección, por $12.000.</p></details>
+      <details><summary>¿Cuánto cuestan los visos?</summary><p>Parten en $50.000. El valor final depende del largo y del tono que buscas, así que conviene mandar una foto por WhatsApp para cotizar.</p></details>
+      <details><summary>¿Cortan a niños?</summary><p>Sí. En la <a href="#trabajos">galería</a> puedes ver cortes de niños con fade y diseños.</p></details>
+      <details><summary>¿Qué días atienden?</summary><p>De lunes a domingo, con hora agendada.</p></details>
+      <details><summary>¿Dónde queda el estudio?</summary><p>En Quilicura, Santiago. Te confirmamos la dirección exacta al agendar.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="visitanos">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><p class="eyebrow">Contacto</p><h2><span class="metal">Visítanos</span></h2></div>
+      <p>Reserva tu hora online o escribe por WhatsApp. Te confirmamos la dirección exacta al agendar.</p>
+    </div>
+    <div class="visit reveal">
+      <div class="studio"><img id="studioImg" alt="Diego cortando el pelo a un cliente en el estudio, bajo las luces hexagonales" loading="lazy"></div>
+      <div>
+        <h3>Ubicación</h3>
+        <p><strong>Quilicura</strong><br>Santiago, Región Metropolitana</p>
+        <div class="row"><a class="btn btn-line js-map" href="#" target="_blank" rel="noopener">Cómo llegar</a></div>
+      </div>
+      <div>
+        <h3>Horario</h3>
+        <p><strong>Lunes a domingo</strong><br>Atención con hora agendada</p>
+        <div class="row"><a class="btn btn-gold js-book" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cal"/></svg>Agenda online</a></div>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <p>WhatsApp <span class="mono-num" id="phoneTxt"></span><br>Instagram <span class="mono-num">@diegobarbeerr19</span></p>
+        <div class="row">
+          <a class="btn btn-wa js-wa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="btn btn-line" href="https://www.instagram.com/diegobarbeerr19/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand"><img class="nav-mono js-mono" alt="" width="29" height="44"><b class="metal">Diego Barber Studio</b></span>
+    <span>© 2026 · Precios referenciales en CLP</span>
+    <span>Web por Get Nexus</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<a class="fab fab-ig" href="https://www.instagram.com/diegobarbeerr19/" target="_blank" rel="noopener" aria-label="Ver el Instagram de Diego Barber"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
+<a class="fab js-wa" href="#" target="_blank" rel="noopener" aria-label="Escribir a Diego Barber por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const FOTOS = [
+ {
+  "t": "Mid fade texturizado",
+  "cat": [
+   "Fade"
+  ],
+  "foto": "img/galeria/mid-fade-texturizado.webp"
+ },
+ {
+  "t": "Side part con fade y barba",
+  "cat": [
+   "Clásicos",
+   "Barba"
+  ],
+  "foto": "img/galeria/side-part-con-fade-y-barba.webp"
+ },
+ {
+  "t": "Visos platinados",
+  "cat": [
+   "Visos"
+  ],
+  "foto": "img/galeria/visos-platinados.webp"
+ },
+ {
+  "t": "Diseño freestyle",
+  "cat": [
+   "Diseños",
+   "Niños"
+  ],
+  "foto": "img/galeria/diseno-freestyle.webp"
+ },
+ {
+  "t": "Low fade con volumen",
+  "cat": [
+   "Fade"
+  ],
+  "foto": "img/galeria/low-fade-con-volumen.webp"
+ },
+ {
+  "t": "Low taper fade",
+  "cat": [
+   "Fade"
+  ],
+  "foto": "img/galeria/low-taper-fade.webp"
+ },
+ {
+  "t": "Fade con raya",
+  "cat": [
+   "Clásicos"
+  ],
+  "foto": "img/galeria/fade-con-raya.webp"
+ },
+ {
+  "t": "Fade y barba perfilada",
+  "cat": [
+   "Barba"
+  ],
+  "foto": "img/galeria/fade-y-barba-perfilada.webp"
+ },
+ {
+  "t": "Low fade",
+  "cat": [
+   "Fade"
+  ],
+  "foto": "img/galeria/low-fade.webp"
+ },
+ {
+  "t": "Diseño de líneas",
+  "cat": [
+   "Diseños"
+  ],
+  "foto": "img/galeria/diseno-de-lineas.webp"
+ },
+ {
+  "t": "Fade con flequillo",
+  "cat": [
+   "Niños",
+   "Fade"
+  ],
+  "foto": "img/galeria/fade-con-flequillo.webp"
+ },
+ {
+  "t": "Taper fade",
+  "cat": [
+   "Fade"
+  ],
+  "foto": "img/galeria/taper-fade.webp"
+ },
+ {
+  "t": "Burst fade",
+  "cat": [
+   "Fade"
+  ],
+  "foto": "img/galeria/burst-fade.webp"
+ },
+ {
+  "t": "Fade con líneas",
+  "cat": [
+   "Diseños"
+  ],
+  "foto": "img/galeria/fade-con-lineas.webp"
+ },
+ {
+  "t": "Side part clásico",
+  "cat": [
+   "Niños",
+   "Clásicos"
+  ],
+  "foto": "img/galeria/side-part-clasico.webp"
+ }
+];
+const ESTUDIO = [
+ {
+  "t": "Sala de espera",
+  "foto": "img/estudio/sala-de-espera.webp"
+ },
+ {
+  "t": "Luces hexagonales",
+  "foto": "img/estudio/luces-hexagonales.webp"
+ },
+ {
+  "t": "Tu sillón",
+  "foto": "img/estudio/tu-sillon.webp"
+ },
+ {
+  "t": "Estación de trabajo",
+  "foto": "img/estudio/estacion-de-trabajo.webp"
+ },
+ {
+  "t": "Manos a la obra",
+  "foto": "img/estudio/manos-a-la-obra.webp"
+ }
+];
+const FOTO_DIEGO = "img/diego-morales.webp";
+const FOTO_HERO = "img/hero-estudio.webp";
+const FOTO_ESTUDIO = "img/diego-trabajando.webp";
+</script>
+<script>
+const LOGO = "img/logo.webp";
+const LOGO_MONO = "img/logo-monograma.webp";
+</script>
+<script>
+/* ===================== CONFIGURACIÓN DEL CLIENTE ===================== */
+const CONFIG = {
+  negocio:  "Diego Barber Studio",
+  whatsapp: "56982036191",   // código país + número, sin "+" ni espacios
+  reservas: "https://diegobarberstudio19.setmore.com/diego",
+  /* Video del estudio para el fondo del hero (mp4, idealmente 10–20 s, sin audio, menos de 8 MB).
+     Ej: video: "video/estudio.mp4". Si está vacío se usa la foto del estudio. */
+  video: "",
+  /* Link de pago de Mercado Pago para abonos (opcional). Si está vacío, el botón no aparece. */
+  pago: "",
+  /* Botón «Cómo llegar». Cuando Diego tenga ficha en Google Maps, pega aquí su link. */
+  mapa: "https://www.google.com/maps/search/?api=1&query=Diego+Barber+Studio+Quilicura",
+};
+/* Galería: fotos de clientes de Diego. Cada foto tiene título (t), categorías (cat) e imagen (foto).
+   Para agregar una: {t:"Mid fade", cat:["Fade"], foto:"fotos/mid-fade.jpg"} */
+const TRABAJOS = FOTOS;
+const PRECIOS = [
+  {id:"degradado",  n:"Corte degradado", d:"Incluye perfilado de cejas + 1 línea de diseño a elección", p:12000, ico:"s-fade",  tag:"Más pedido", tipo:"corte", cat:"Cortes", incl:["cejas"]},
+  {id:"clasico",    n:"Corte clásico",   d:"Tijera y máquina, terminación prolija",                       p:10000, ico:"s-sci",   tipo:"corte", cat:"Cortes"},
+  {id:"cortebarba", n:"Corte + barba",   d:"Incluye perfilado de cejas",                                  p:16000, ico:"s-combo", tipo:"corte", cat:"Cortes", incl:["barba","cejas"]},
+  {id:"visos",      n:"Visos",           d:"Decoloración y matiz según tu cabello",                       p:50000, ico:"s-visos", desde:true, tipo:"extra", cat:"Color"},
+  {id:"barba",      n:"Barba sola",      d:"Perfilado y forma",                                           p:6000,  ico:"s-beard", tipo:"extra", cat:"Barba y cejas"},
+  {id:"cejas",      n:"Solo cejas",      d:"Perfilado de cejas",                                          p:2000,  ico:"s-brow",  tipo:"extra", cat:"Barba y cejas"},
+];
+/* ==================================================================== */
+
+const $ = s => document.querySelector(s);
+const clp = n => "$" + Math.round(n).toLocaleString("es-CL");
+const waURL = t => `https://wa.me/${CONFIG.whatsapp}${t ? "?text=" + encodeURIComponent(t) : ""}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+document.querySelectorAll(".js-book").forEach(a => a.href = CONFIG.reservas);
+document.querySelectorAll(".js-map").forEach(a => a.href = CONFIG.mapa);
+if (CONFIG.pago){ $("#payBtn").href = CONFIG.pago; $("#payBtn").hidden = false; }
+document.querySelectorAll(".js-wa").forEach(a => a.href = waURL(`Hola ${CONFIG.negocio}, quiero agendar una hora.`));
+$("#phoneTxt").textContent = "+" + CONFIG.whatsapp.replace(/^(\d{2})(\d)(\d{4})(\d{4})$/, "$1 $2 $3 $4");
+
+/* Marquesina */
+const words = ["Mid Fade","Burst Fade","Corte clásico","Barba","Visos","Color","Diseño de líneas","Cejas"];
+$("#track").innerHTML = [...words, ...words].map(w => `<span>${w}</span>`).join("");
+
+/* Placas de precio */
+$("#plates").innerHTML = PRECIOS.map(s => `
+  <article class="plate${s.tag ? " feat" : ""}" data-cat="${s.cat}">
+    ${s.tag ? `<span class="tag">${s.tag}</span>` : ""}
+    <svg class="ico" aria-hidden="true"><use href="#${s.ico}"/></svg>
+    <h3>${s.n}</h3><p>${s.d}</p>
+    <div class="foot">
+      <div class="price">${s.desde ? "<small>desde</small>" : ""}<strong class="metal">${clp(s.p)}</strong></div>
+      <button type="button" class="add" data-id="${s.id}" aria-label="Agregar ${s.n} al cotizador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar</button>
+    </div>
+  </article>`).join("");
+
+/* Catálogo: filtros por categoría */
+const SCATS = ["Todos", ...new Set(PRECIOS.map(s => s.cat))];
+$("#catTabs").innerHTML = SCATS.map((c, i) => `<button type="button" class="chip" data-c="${c}" aria-pressed="${i === 0}">${c}<span>${c === "Todos" ? PRECIOS.length : PRECIOS.filter(s => s.cat === c).length}</span></button>`).join("");
+$("#catTabs").addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  $("#catTabs").querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === b));
+  document.querySelectorAll(".plate").forEach(pl => pl.hidden = !(b.dataset.c === "Todos" || pl.dataset.cat === b.dataset.c));
+});
+
+/* Catálogo → cotizador */
+function toast(msg){
+  const t = $("#toast");
+  t.innerHTML = `<span>${msg}</span><a href="#cotizador">Ver cotización</a>`;
+  t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 3200);
+}
+$("#toast").addEventListener("click", e => { if (e.target.closest("a")) $("#toast").classList.remove("show"); });
+$("#plates").addEventListener("click", e => {
+  const b = e.target.closest(".add"); if (!b) return;
+  const s = PRECIOS.find(x => x.id === b.dataset.id);
+  if (s.tipo === "corte"){ $("#corte-" + s.id).checked = true; render(); toast(`${s.n} quedó en tu cotización`); }
+  else {
+    render(); const inp = $("#extra-" + s.id);
+    if (inp.disabled) toast(`${s.n} ya viene incluido en tu corte`);
+    else { inp.checked = true; render(); toast(`${s.n} quedó en tu cotización`); }
+  }
+  const tk = $(".ticket"); tk.classList.remove("pulse"); void tk.offsetWidth; if (!reduce) tk.classList.add("pulse");
+});
+
+if (matchMedia("(hover: hover) and (pointer: fine)").matches && !reduce) {
+  document.querySelectorAll(".plate").forEach(el => {
+    el.addEventListener("pointermove", e => {
+      const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      el.classList.add("live");
+      el.style.setProperty("--ry", ((x - .5) * 16).toFixed(2) + "deg");
+      el.style.setProperty("--rx", ((.5 - y) * 14).toFixed(2) + "deg");
+      el.style.setProperty("--gx", (x * 100) + "%"); el.style.setProperty("--gy", (y * 100) + "%");
+    });
+    el.addEventListener("pointerleave", () => { el.classList.remove("live"); el.style.setProperty("--rx","0deg"); el.style.setProperty("--ry","0deg"); });
+  });
+}
+
+/* Mármol negro con vetas doradas (generado) */
+(function marble(){
+  try{
+    const c = document.createElement("canvas"); c.width = 900; c.height = 1200;
+    const g = c.getContext("2d"); let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const bg = g.createLinearGradient(0,0,900,1200); bg.addColorStop(0,"#121110"); bg.addColorStop(.5,"#0B0A09"); bg.addColorStop(1,"#15130F");
+    g.fillStyle = bg; g.fillRect(0,0,900,1200);
+    const vein = (gold, w, a) => {
+      let x = rnd()*900, y = -50; g.beginPath(); g.moveTo(x,y);
+      while (y < 1250) { const nx = x + (rnd()-.45)*160, ny = y + 60 + rnd()*90; g.quadraticCurveTo(x+(rnd()-.5)*120, (y+ny)/2, nx, ny); x = nx; y = ny; }
+      g.strokeStyle = gold ? `rgba(214,178,96,${a})` : `rgba(230,225,215,${a})`; g.lineWidth = w;
+      g.shadowColor = gold ? "rgba(214,178,96,.8)" : "rgba(255,255,255,.4)"; g.shadowBlur = gold ? 8 : 4; g.stroke();
+    };
+    for (let i=0;i<10;i++) vein(false, .6+rnd(), .06+rnd()*.06);
+    for (let i=0;i<6;i++)  vein(true, .8+rnd()*1.6, .35+rnd()*.35);
+    document.documentElement.style.setProperty("--marble", `url(${c.toDataURL("image/jpeg",.82)})`);
+  }catch(e){}
+})();
+
+/* Galería 3D */
+$("#studioImg").src = FOTO_ESTUDIO;
+$("#diegoImg").src = FOTO_DIEGO;
+/* El estudio: mosaico */
+(function bento(){
+  const by = t => ESTUDIO.find(e => e.t === t);
+  const order = ["Tu sillón", "Luces hexagonales", "Estación de trabajo", "Manos a la obra", "Sala de espera"].map(by).filter(Boolean);
+  $("#bento").innerHTML = order.map((e, i) => `<figure class="tile t${i + 1} reveal"><img src="${e.foto}" alt="${e.t} en Diego Barber Studio" loading="lazy"><figcaption>${e.t}</figcaption></figure>`).join("");
+  if (matchMedia("(hover: hover) and (pointer: fine)").matches && !reduce){
+    document.querySelectorAll(".tile").forEach(el => {
+      el.addEventListener("pointermove", ev => { const r = el.getBoundingClientRect(), x = (ev.clientX - r.left) / r.width, y = (ev.clientY - r.top) / r.height; el.classList.add("live"); el.style.setProperty("--ry", ((x - .5) * 8).toFixed(2) + "deg"); el.style.setProperty("--rx", ((.5 - y) * 6).toFixed(2) + "deg"); });
+      el.addEventListener("pointerleave", () => { el.classList.remove("live"); el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg"); });
+    });
+  }
+})();
+if (matchMedia("(hover: hover) and (pointer: fine)").matches && !reduce){
+  const pt = $("#portrait");
+  pt.addEventListener("pointermove", e => { const r = pt.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; pt.classList.add("live"); pt.style.setProperty("--ry", ((x - .5) * 12).toFixed(2) + "deg"); pt.style.setProperty("--rx", ((.5 - y) * 10).toFixed(2) + "deg"); });
+  pt.addEventListener("pointerleave", () => { pt.classList.remove("live"); pt.style.setProperty("--rx", "0deg"); pt.style.setProperty("--ry", "0deg"); });
+}
+/* Logo + fondo del hero */
+document.querySelectorAll(".js-mono").forEach(i => i.src = LOGO_MONO);
+$("#heroLogo").src = LOGO;
+$("#heroImg").src = FOTO_HERO;
+(function heroVideo(){
+  const v = $("#heroVideo");
+  if (!CONFIG.video) return;
+  v.src = CONFIG.video; v.poster = FOTO_HERO;
+  v.addEventListener("canplay", () => { v.hidden = false; $("#heroImg").hidden = true; if (!reduce) v.play().catch(() => {}); }, {once:true});
+})();
+(function gallery(){
+  const ring = $("#ring"), spin = $("#spin"), label = $("#ringLabel"), chips = $("#chips"), prev = $("#prev"), next = $("#next");
+  const count = c => c === "Todos" ? TRABAJOS.length : TRABAJOS.filter(t => t.cat.includes(c)).length;
+  const CATS = ["Todos", ...new Set(TRABAJOS.flatMap(t => t.cat))];
+  chips.innerHTML = CATS.map((c, i) => `<button type="button" class="chip" data-c="${c}" aria-pressed="${i === 0}">${c}<span>${count(c)}</span></button>`).join("");
+  let list = [], cards = [], n = 0, step = 0, flat = false, sel = 0, downX = 0;
+  let R = 300, ang = 0, vel = 0, base = reduce ? 0 : -9, drag = false, lx = 0, lt = 0, snap = null, pauseUntil = 0, front = -1;
+
+  function build(cat){
+    list = cat === "Todos" ? TRABAJOS : TRABAJOS.filter(t => t.cat.includes(cat));
+    spin.innerHTML = list.map(t => `<figure class="card3d"><img src="${t.foto}" alt="${t.t} hecho por Diego Barber" draggable="false"><figcaption><small>${t.cat.join(" · ")}</small>${t.t}</figcaption></figure>`).join("");
+    cards = [...spin.children]; n = cards.length; step = 360 / n; flat = n < 6; sel = Math.floor((n - 1) / 2);
+    cards.forEach((c, i) => c.addEventListener("click", () => { if (flat && i !== sel){ sel = i; layout(); } }));
+    ang = 0; vel = 0; snap = null; front = -1; pauseUntil = performance.now() + 1200;
+    prev.disabled = next.disabled = n < 2;
+    ring.classList.toggle("flat", flat);
+    spin.classList.remove("swap"); void spin.offsetWidth; if (!reduce) spin.classList.add("swap");
+    layout(); kick();
+  }
+  function layout(){
+    if (!cards.length) return;
+    const w = cards[0].offsetWidth;
+    if (flat){
+      cards.forEach((c, i) => {
+        const o = i - sel, a = Math.abs(o);
+        c.style.transform = `translateX(${o * w * .7}px) translateZ(${-a * 150}px) rotateY(${-Math.sign(o) * Math.min(a, 1) * 34}deg)`;
+        c.style.zIndex = 10 - a;
+        c.style.filter = `brightness(${(1 - Math.min(a, 2) * .3).toFixed(2)})`;
+        c.classList.toggle("front", o === 0);
+      });
+    } else {
+      cards.forEach(c => c.style.zIndex = "");
+      R = Math.round((w / 2) / Math.tan(Math.PI / n) + w * .22);
+      cards.forEach((c, i) => c.style.transform = `rotateY(${i * step}deg) translateZ(${R}px)`);
+    }
+    apply();
+  }
+  function apply(){
+    if (flat){
+      spin.style.transform = "none";
+      label.textContent = n === 1 ? list[0].t : `${list[sel].t} · ${sel + 1}/${n}`;
+      return;
+    }
+    spin.style.transform = `translateZ(${-R}px) rotateY(${ang}deg)`;
+    let best = 0, bd = 999;
+    cards.forEach((c, i) => {
+      const rel = ((i * step + ang) % 360 + 360) % 360, d = Math.min(rel, 360 - rel);
+      c.style.filter = `brightness(${(1 - d / 180 * .65).toFixed(3)})`;
+      if (d < bd){ bd = d; best = i; }
+    });
+    if (best !== front){ cards.forEach((c, i) => c.classList.toggle("front", i === best)); front = best; label.textContent = `${list[best].t} · ${best + 1}/${n}`; }
+  }
+  chips.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    chips.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === b));
+    build(b.dataset.c);
+  });
+  const go = dir => { if (flat){ sel = (sel + dir + n) % n; layout(); return; } const idx = Math.round(-ang / step) + dir; snap = -idx * step; pauseUntil = performance.now() + 5000; kick(); };
+  prev.addEventListener("click", () => go(-1));
+  next.addEventListener("click", () => go(1));
+  ring.addEventListener("pointerdown", e => { downX = e.clientX; if (flat) return; drag = true; snap = null; lx = e.clientX; lt = performance.now(); vel = 0; ring.setPointerCapture(e.pointerId); kick(); });
+  ring.addEventListener("pointermove", e => { if (!drag) return; const now = performance.now(), dx = e.clientX - lx; ang += dx * .28; vel = dx * .28 / Math.max((now - lt) / 1000, .008); lx = e.clientX; lt = now; apply(); });
+  const up = e => { if (flat && e && Math.abs(e.clientX - downX) > 40){ go(e.clientX < downX ? 1 : -1); return; } if (!drag) return; drag = false; pauseUntil = performance.now() + 2500; kick(); };
+  ring.addEventListener("pointerup", up); ring.addEventListener("pointercancel", up);
+  ring.addEventListener("keydown", e => { if (e.key === "ArrowLeft") go(-1); if (e.key === "ArrowRight") go(1); });
+  let visible = true, raf = 0, last = 0;
+  new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (visible) kick(); }).observe(ring);
+  function kick(){ if (!raf && visible && !flat){ last = performance.now(); raf = requestAnimationFrame(loop); } }
+  function loop(now){
+    raf = 0; const dt = Math.min((now - last) / 1000, .05); last = now;
+    if (!drag){
+      if (snap !== null){ ang += (snap - ang) * Math.min(dt * 7, 1); if (Math.abs(snap - ang) < .05){ ang = snap; snap = null; } }
+      else { const target = now < pauseUntil ? 0 : base; vel += (target - vel) * Math.min(dt * 2.2, 1); ang += vel * dt; }
+      apply();
+    }
+    if (visible && (drag || snap !== null || Math.abs(vel) > .05 || base !== 0 || now < pauseUntil)) kick();
+  }
+  new ResizeObserver(layout).observe(ring);
+  build("Todos");
+})();
+
+/* Cotizador */
+const opt = (type, name, s, checked) => `
+  <div class="opt"><input type="${type}" name="${name}" id="${name}-${s.id}" value="${s.id}"${checked ? " checked" : ""}>
+  <label for="${name}-${s.id}"><span class="t"><span>${s.n}</span><em id="pr-${s.id}">${s.p == null ? "" : (s.desde ? "desde " : "") + clp(s.p)}</em></span><span class="s">${s.d || ""}</span></label></div>`;
+const cortes = PRECIOS.filter(s => s.tipo === "corte");
+const extras = PRECIOS.filter(s => s.tipo === "extra");
+$("#opts-corte").innerHTML = cortes.map((s,i) => opt("radio","corte",s,i===0)).join("") + opt("radio","corte",{id:"ninguno",n:"Sin corte",d:"Solo adicionales",p:null},false);
+$("#opts-extra").innerHTML = extras.map(s => opt("checkbox","extra",{...s, n: s.id==="barba" ? "Barba" : s.id==="cejas" ? "Cejas" : s.n},false)).join("");
+
+function cotizar(){
+  const cid = document.querySelector('input[name="corte"]:checked').value;
+  const corte = PRECIOS.find(s => s.id === cid);
+  const incl = corte?.incl || [];
+  extras.forEach(e => {
+    const inp = $("#extra-" + e.id), tag = $("#pr-" + e.id);
+    const isIn = incl.includes(e.id);
+    inp.disabled = isIn; if (isIn) inp.checked = false;
+    tag.textContent = isIn ? "Incluido" : (e.desde ? "desde " : "") + clp(e.p);
+  });
+  const lines = []; let total = 0, desde = false;
+  if (corte){ lines.push([corte.n, clp(corte.p)]); total += corte.p; incl.forEach(id => lines.push([id==="cejas"?"Perfilado de cejas":"Barba", "Incluido", 1])); }
+  extras.forEach(e => { if ($("#extra-" + e.id).checked){ lines.push([e.n, (e.desde?"desde ":"") + clp(e.p)]); total += e.p; if (e.desde) desde = true; } });
+  return {lines, total, desde, ok: lines.some(l => !l[2])};
+}
+function render(){
+  const q = cotizar();
+  $("#lines").innerHTML = q.ok ? q.lines.map(([n,p,inc]) => `<li${inc?' class="inc"':""}><span>${n}</span><span>${p}</span></li>`).join("")
+                               : `<li class="empty">Elige un servicio para ver el total</li>`;
+  $("#total").innerHTML = (q.desde ? "<small>desde</small>" : "") + clp(q.ok ? q.total : 0);
+  if (q.ok) $("#err").hidden = true;
+}
+$("#quote").addEventListener("change", render);
+$("#quote").addEventListener("submit", e => {
+  e.preventDefault();
+  const q = cotizar();
+  if (!q.ok){ $("#err").hidden = false; return; }
+  const nombre = $("#nombre").value.trim();
+  const f = $("#fecha").value;
+  const fecha = f ? new Date(f + "T12:00").toLocaleDateString("es-CL",{weekday:"long",day:"numeric",month:"long"}) : "a coordinar";
+  const msg = [
+    `Hola Diego${nombre ? ", soy " + nombre : ""}. Quiero agendar:`,
+    ...q.lines.map(([n,p]) => `• ${n}: ${p}`),
+    `Total: ${q.desde ? "desde " : ""}${clp(q.total)}`,
+    `Fecha: ${fecha} · ${$("#franja").value}`,
+    `¿Tienes disponibilidad?`
+  ].join("\n");
+  const a = document.createElement("a"); a.href = waURL(msg); a.target = "_blank"; a.rel = "noopener";
+  document.body.appendChild(a); a.click(); a.remove();
+});
+render();
+
+/* Aparición suave al hacer scroll (contenido visible por defecto) */
+if (!reduce && "IntersectionObserver" in window){
+  const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ en.target.classList.remove("pre"); io.unobserve(en.target); } }), {rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".reveal").forEach(el => {
+    const r = el.getBoundingClientRect(); if (r.top > innerHeight) { el.classList.add("pre"); io.observe(el); }
+  });
+}
+
+/* ===================== Poste de barbería 3D ===================== */
+(function pole(){
+  const canvas = $("#pole3d"), stage = canvas.parentElement;
+  const fallback = () => { canvas.hidden = true; $("#poleFallback").hidden = false; };
+  if (!window.THREE) return fallback();
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true}); } catch(e){ return fallback(); }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.15;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, 1, .1, 100);
+  camera.position.set(0, 0, 11.5);
+
+  /* Entorno para reflejos metálicos */
+  const pm = new THREE.PMREMGenerator(renderer);
+  const env = new THREE.Scene();
+  const panel = (c, w, h, x, y, z, ry) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(w,h), new THREE.MeshBasicMaterial({color:c, side:THREE.DoubleSide})); m.position.set(x,y,z); m.rotation.y = ry||0; env.add(m); };
+  env.background = new THREE.Color(0x060504);
+  panel(0xffffff, 6, 14, -7, 2, 2, Math.PI/2.4);
+  panel(0xffe2a8, 4, 10, 7, 0, 3, -Math.PI/2.2);
+  panel(0xfff4d6, 12, 3, 0, 8, 0, 0);
+  panel(0x3a2a10, 20, 20, 0, 0, -9, 0);
+  scene.environment = pm.fromScene(env, .03).texture;
+
+  /* Textura de franjas: negro / marfil / oro */
+  const tc = document.createElement("canvas"); tc.width = tc.height = 512;
+  const tg = tc.getContext("2d"); const cols = ["#0c0b0a","#f2ede2","#c9a24a","#f2ede2"]; const bw = 64;
+  for (let k=-12;k<12;k++){ tg.fillStyle = cols[((k%4)+4)%4]; tg.beginPath(); tg.moveTo(k*bw,0); tg.lineTo(k*bw+bw,0); tg.lineTo(k*bw+bw+512,512); tg.lineTo(k*bw+512,512); tg.closePath(); tg.fill(); }
+  const tex = new THREE.CanvasTexture(tc); tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(1, 1.6); tex.encoding = THREE.sRGBEncoding;
+  tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+  const gold  = new THREE.MeshStandardMaterial({color:0xd8b25e, metalness:1, roughness:.2});
+  const ebony = new THREE.MeshStandardMaterial({color:0x0e0d0c, metalness:.9, roughness:.32});
+  const group = new THREE.Group(); scene.add(group);
+  const add = (geo, mat, y) => { const m = new THREE.Mesh(geo, mat); m.position.y = y; group.add(m); return m; };
+
+  add(new THREE.CylinderGeometry(.6,.6,3.4,96,1,true), new THREE.MeshStandardMaterial({map:tex, roughness:.32, metalness:.15}), 0);
+  const glass = add(new THREE.CylinderGeometry(.7,.7,3.5,96,1,true), new THREE.MeshPhysicalMaterial({color:0xffffff, roughness:.04, metalness:0, transparent:true, opacity:.16, clearcoat:1, clearcoatRoughness:.05, envMapIntensity:2.2, depthWrite:false}), 0);
+  glass.renderOrder = 2;
+  [1,-1].forEach(s => {
+    add(new THREE.CylinderGeometry(.82,.82,.16,64), gold, s*1.82);
+    const ring = add(new THREE.TorusGeometry(.79,.045,16,96), gold, s*1.71); ring.rotation.x = Math.PI/2;
+    add(new THREE.CylinderGeometry(s>0?.62:.74, s>0?.74:.62, .42, 64), ebony, s*2.11);
+    const r2 = add(new THREE.TorusGeometry(.7,.035,12,80), gold, s*2.0); r2.rotation.x = Math.PI/2;
+    const dome = add(new THREE.SphereGeometry(.5,48,24,0,Math.PI*2,0,Math.PI/2), gold, s*2.32); if (s<0) dome.rotation.x = Math.PI;
+    add(new THREE.CylinderGeometry(.06,.1,.32,24), gold, s*2.95);
+    add(new THREE.SphereGeometry(.14,32,16), gold, s*3.18);
+  });
+
+  /* Polvo dorado */
+  const N = 420, pos = new Float32Array(N*3), spd = new Float32Array(N);
+  for (let i=0;i<N;i++){ pos[i*3] = (Math.random()-.5)*7; pos[i*3+1] = (Math.random()-.5)*8; pos[i*3+2] = (Math.random()-.5)*4; spd[i] = .08 + Math.random()*.25; }
+  const pg = new THREE.BufferGeometry(); pg.setAttribute("position", new THREE.BufferAttribute(pos,3));
+  const dust = new THREE.Points(pg, new THREE.PointsMaterial({color:0xF0CF7E, size:.035, transparent:true, opacity:.75, blending:THREE.AdditiveBlending, depthWrite:false}));
+  scene.add(dust);
+
+  scene.add(new THREE.AmbientLight(0xffffff, .25));
+  const key = new THREE.DirectionalLight(0xffe6b0, 2.4); key.position.set(4,5,6); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xfff1d0, 1.2); rim.position.set(-5,2,-3); scene.add(rim);
+
+  group.rotation.z = .1;
+
+  /* Interacción: arrastrar para girar con inercia + inclinación al mover el cursor */
+  let rotY = .4, vel = reduce ? 0 : .35, dragging = false, lastX = 0, tiltX = 0, tiltZ = .1, tX = 0, tZ = .1;
+  canvas.addEventListener("pointerdown", e => { dragging = true; lastX = e.clientX; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener("pointermove", e => { if (!dragging) return; const dx = e.clientX - lastX; lastX = e.clientX; rotY += dx*.012; vel = dx*.6; kick(); });
+  const end = () => { dragging = false; };
+  canvas.addEventListener("pointerup", end); canvas.addEventListener("pointercancel", end);
+  $("#cotizador").addEventListener("pointermove", e => {
+    const r = stage.getBoundingClientRect();
+    tX = ((e.clientY - (r.top + r.height/2)) / r.height) * .25;
+    tZ = .1 - ((e.clientX - (r.left + r.width/2)) / r.width) * .18;
+    kick();
+  });
+
+  function resize(){
+    const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return;
+    renderer.setSize(w, h, false); camera.aspect = w/h;
+    camera.position.z = w/h < .62 ? 14.5 : w/h < 1 ? 13.2 : 12.6; camera.updateProjectionMatrix(); kick();
+  }
+  new ResizeObserver(resize).observe(stage);
+
+  let visible = true, raf = 0, last = performance.now();
+  new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (visible) kick(); }).observe(stage);
+  function kick(){ if (!raf && visible) { last = performance.now(); raf = requestAnimationFrame(loop); } }
+  function loop(now){
+    raf = 0;
+    const dt = Math.min((now - last)/1000, .05); last = now;
+    if (!dragging){ const base = reduce ? 0 : .35; vel += (base - vel) * Math.min(dt*1.6, 1); rotY += vel*dt; }
+    tiltX += (tX - tiltX) * Math.min(dt*3, 1); tiltZ += (tZ - tiltZ) * Math.min(dt*3, 1);
+    group.rotation.set(tiltX, rotY, tiltZ);
+    if (!reduce){
+      tex.offset.y -= dt*.18;
+      group.position.y = Math.sin(now/1400)*.08;
+      const a = pg.attributes.position.array;
+      for (let i=0;i<N;i++){ a[i*3+1] += spd[i]*dt; if (a[i*3+1] > 4) a[i*3+1] = -4; }
+      pg.attributes.position.needsUpdate = true; dust.rotation.y += dt*.03;
+    }
+    renderer.render(scene, camera);
+    const settling = Math.abs(tX - tiltX) > .001 || Math.abs(tZ - tiltZ) > .001 || Math.abs(vel) > .002;
+    if (visible && (!reduce || dragging || settling)) kick();
+  }
+  resize(); renderer.render(scene, camera); kick();
+})();
+</script>
+</body>
+</html>
