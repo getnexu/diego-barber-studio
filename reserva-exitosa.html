@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0908">
+<title>Reserva confirmada · Diego Barber Studio</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap">
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0A0908; --ink:#EFE8D8; --ink-2:#A89F8C; --gold:#D4AF5A; --gold-hi:#F3DE9C; --on-gold:#17120A; --line:rgba(212,175,90,.2);
+  --wa:#25B864; --on-wa:#04150A;
+  --gold-metal:linear-gradient(175deg,#FBEFC4 0%,#E2C377 38%,#9C7A2C 52%,#D9B867 70%,#F6E3A6 100%);
+  --display:"Cinzel","Trajan Pro",Georgia,serif; --body:"Jost","Avenir Next","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;display:grid;place-items:center;min-height:100dvh;padding:24px 16px}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(12,11,9,.3),rgba(12,11,9,.3)),url("/img/marmol.webp") center/cover no-repeat,var(--bg)}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:4px}
+.card{width:min(480px,100%);padding:2.4rem 1.8rem 1.8rem;text-align:center;border:1px solid rgba(212,175,90,.5);border-radius:6px;background:linear-gradient(180deg,rgba(212,175,90,.1),transparent 35%),rgba(18,16,13,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 40px 80px -30px rgba(0,0,0,.95)}
+.logo{display:block;width:120px;height:auto;margin:0 auto 1.2rem}
+.check{width:72px;height:72px;margin:0 auto 1rem}
+.check svg{width:100%;height:100%;fill:none;stroke:var(--gold);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.check circle{stroke-dasharray:151;stroke-dashoffset:151;animation:draw .7s .2s ease-out forwards}
+.check path{stroke-dasharray:40;stroke-dashoffset:40;animation:draw .45s .8s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.eyebrow{font-size:.7rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin:0}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,7vw,2.6rem);line-height:1.1;margin:.5rem 0 .7rem;text-transform:uppercase;background:var(--gold-metal);-webkit-background-clip:text;background-clip:text;color:transparent;text-wrap:balance}
+.lead{color:var(--ink-2);font-weight:300;margin:0 auto 1.5rem;max-width:36ch}
+.info{margin:0 0 1.5rem;padding:1rem 1.1rem;border:1px dashed var(--line);border-radius:4px;text-align:left;font-size:.92rem}
+.info div{display:flex;justify-content:space-between;gap:1rem;padding:.3rem 0}
+.info span:first-child{color:var(--ink-2)}
+.info span:last-child{text-align:right}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:46px;padding:.7rem 1.2rem;border-radius:2px;font-family:var(--body);font-weight:500;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:18px;height:18px}
+.btn-gold{background:var(--gold-metal);color:var(--on-gold)}
+.btn-line{color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-line:hover{box-shadow:inset 0 0 0 1px var(--gold);color:var(--gold-hi)}
+.foot{margin:1.4rem 0 0;font-size:.85rem;color:var(--ink-2)}
+.foot a{color:var(--gold-hi)}
+@media (prefers-reduced-motion:reduce){.check circle,.check path{animation:none;stroke-dashoffset:0}.btn{transition:none}}
+</style>
+</head>
+<body>
+<main class="card">
+  <img class="logo" src="/img/logo.webp" alt="Diego Barber. Barbería, estilo, precisión" width="640" height="541">
+  <div class="check" aria-hidden="true"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+  <p class="eyebrow">Reserva exitosa</p>
+  <h1>¡Tu hora quedó agendada!</h1>
+  <p class="lead">Gracias por reservar con Diego. Revisa tu correo: ahí te llega la confirmación con el día y la hora.</p>
+  <div class="info">
+    <div><span>Dirección</span><span>Lo Marcoleta 610, Quilicura</span></div>
+    <div><span>Atención</span><span>Lunes a domingo</span></div>
+  </div>
+  <div class="actions">
+    <a class="btn btn-gold" href="https://www.google.com/maps/dir/?api=1&amp;destination=Lo+Marcoleta+610,+Quilicura,+Chile" target="_blank" rel="noopener">Cómo llegar</a>
+    <a class="btn btn-line" href="https://waze.com/ul?q=Lo%20Marcoleta%20610%2C%20Quilicura&amp;navigate=yes" target="_blank" rel="noopener">Waze</a>
+    <a class="btn btn-line" href="/">Volver al inicio</a>
+  </div>
+  <p class="foot">¿Necesitas cambiar tu hora? <a href="https://wa.me/56982036191?text=Hola%20Diego%2C%20necesito%20cambiar%20mi%20hora." target="_blank" rel="noopener">Escríbele a Diego por WhatsApp</a></p>
+</main>
+</body>
+</html>

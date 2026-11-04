@@ -14,7 +14,10 @@
 <meta property="og:title" content="Diego Barber Studio · Barbería en Quilicura">
 <meta property="og:description" content="Degradados de precisión, diseños, barba y visos. Cotiza y reserva tu hora por WhatsApp.">
 <meta property="og:locale" content="es_CL">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HairSalon", "name": "Diego Barber Studio", "description": "Barbería en Quilicura, Santiago. Degradados, cortes clásicos, barba, cejas y visos.", "telephone": "+56982036191", "priceRange": "$2.000 - $50.000", "openingHours": "Mo-Su", "address": {"@type": "PostalAddress", "streetAddress": "Lo Marcoleta 610", "addressLocality": "Quilicura", "addressRegion": "Región Metropolitana", "addressCountry": "CL"}, "founder": {"@type": "Person", "name": "Diego Morales", "jobTitle": "Barbero profesional"}, "sameAs": ["https://www.instagram.com/diegobarbeerr19/", "https://diegobarberstudio19.setmore.com/diego"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corte degradado"}, "price": "12000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corte clásico"}, "price": "10000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corte + barba"}, "price": "16000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Visos"}, "price": "50000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Barba sola"}, "price": "6000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Solo cejas"}, "price": "2000", "priceCurrency": "CLP"}]}</script>
+<meta property="og:url" content="https://diegobarberstudio.cl/">
+<meta property="og:image" content="https://diegobarberstudio.cl/img/hero-estudio.webp">
+<link rel="canonical" href="https://diegobarberstudio.cl/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HairSalon", "name": "Diego Barber Studio", "description": "Barbería en Quilicura, Santiago. Degradados, cortes clásicos, barba, cejas y visos.", "url": "https://diegobarberstudio.cl/", "telephone": "+56982036191", "priceRange": "$2.000 - $50.000", "openingHours": "Mo-Su", "address": {"@type": "PostalAddress", "streetAddress": "Lo Marcoleta 610", "addressLocality": "Quilicura", "addressRegion": "Región Metropolitana", "addressCountry": "CL"}, "founder": {"@type": "Person", "name": "Diego Morales", "jobTitle": "Barbero profesional"}, "sameAs": ["https://www.instagram.com/diegobarbeerr19/", "https://diegobarberstudio19.setmore.com/diego"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corte degradado"}, "price": "12000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corte clásico"}, "price": "10000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corte + barba"}, "price": "16000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Visos"}, "price": "50000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Barba sola"}, "price": "6000", "priceCurrency": "CLP"}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Solo cejas"}, "price": "2000", "priceCurrency": "CLP"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Pinyon+Script&family=Jost:wght@300;400;500;600&display=swap">
@@ -306,6 +309,30 @@ section.map-sec{position:relative;padding:0;border-top:1px solid var(--line)}
 .map-card .row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
 .map-card .btn{min-height:44px;font-size:.72rem;padding:.6rem 1rem}
 @media (max-width:700px){.map-card-wrap{position:static;display:block;margin-top:-56px;padding-bottom:24px}.map-card{width:100%}}
+
+/* Reserva enviada */
+dialog.ok{width:min(460px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:2.2rem 1.8rem 1.6rem;border:1px solid rgba(212,175,90,.5);border-radius:6px;background:linear-gradient(180deg,rgba(212,175,90,.1),transparent 35%),#12100D;color:var(--ink);text-align:center;box-shadow:0 40px 80px -30px rgba(0,0,0,.95)}
+dialog.ok::backdrop{background:rgba(6,5,4,.72);backdrop-filter:blur(4px)}
+dialog.ok[open]{animation:okIn .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes okIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.ok-check{width:72px;height:72px;margin:0 auto 1rem}
+.ok-check svg{width:100%;height:100%;fill:none;stroke:var(--gold);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ok-check circle{stroke-dasharray:151;stroke-dashoffset:151;animation:okDraw .7s .1s ease-out forwards}
+.ok-check path{stroke-dasharray:40;stroke-dashoffset:40;animation:okDraw .45s .7s ease-out forwards}
+@keyframes okDraw{to{stroke-dashoffset:0}}
+dialog.ok .eyebrow{justify-content:center}
+dialog.ok .eyebrow::before{display:none}
+dialog.ok h3{font-size:clamp(1.8rem,6vw,2.4rem);margin:.5rem 0 .6rem;text-transform:uppercase}
+.ok-lead{color:var(--ink-2);font-weight:300;margin:0 auto 1.2rem;max-width:36ch}
+.ok-lead b{color:var(--ink);font-weight:500}
+.ok-sum{list-style:none;margin:0 0 1.4rem;padding:1rem 1.1rem;border:1px dashed var(--line);border-radius:4px;text-align:left;font-size:.9rem}
+.ok-sum li{display:flex;justify-content:space-between;gap:1rem;padding:.3rem 0;font-variant-numeric:tabular-nums}
+.ok-sum li span:last-child{color:var(--gold-hi);text-align:right}
+.ok-sum li.tot{margin-top:.4rem;padding-top:.6rem;border-top:1px solid var(--line);font-weight:600}
+.ok-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
+.ok-foot{margin:1.2rem 0 0;font-size:.78rem;color:var(--ink-2)}
+.ok-foot a{color:var(--gold-hi)}
+@media (prefers-reduced-motion:reduce){dialog.ok[open],.ok-check circle,.ok-check path{animation:none;stroke-dashoffset:0}}
 
 /* Preguntas frecuentes */
 .faq{border-top:1px solid var(--line)}
@@ -612,6 +639,18 @@ footer .brand b{font-size:1.3rem}
   </div>
 </footer>
 
+<dialog class="ok" id="okModal" aria-labelledby="okTitle">
+  <div class="ok-check" aria-hidden="true"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+  <p class="eyebrow">Reserva enviada</p>
+  <h3 id="okTitle"><span class="metal">¡Listo<span id="okName"></span>!</span></h3>
+  <p class="ok-lead">Se abrió WhatsApp con tu reserva. Toca <b>Enviar</b> en el chat y Diego te confirma la hora.</p>
+  <ul class="ok-sum" id="okSum"></ul>
+  <div class="ok-actions">
+    <a class="btn btn-wa" id="okWa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Abrir WhatsApp de nuevo</a>
+    <button class="btn btn-line" type="button" id="okClose">Cerrar</button>
+  </div>
+  <p class="ok-foot">Lo Marcoleta 610, Quilicura · <a class="js-map" href="#" target="_blank" rel="noopener">Cómo llegar</a></p>
+</dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <a class="fab fab-ig" href="https://www.instagram.com/diegobarbeerr19/" target="_blank" rel="noopener" aria-label="Ver el Instagram de Diego Barber"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
 <a class="fab js-wa" href="#" target="_blank" rel="noopener" aria-label="Escribir a Diego Barber por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
@@ -1059,7 +1098,17 @@ $("#quote").addEventListener("submit", e => {
   ].join("\n");
   const a = document.createElement("a"); a.href = waURL(msg); a.target = "_blank"; a.rel = "noopener";
   document.body.appendChild(a); a.click(); a.remove();
+  /* Mensaje de reserva enviada */
+  $("#okName").textContent = nombre ? ", " + nombre.split(" ")[0] : "";
+  $("#okSum").innerHTML = q.lines.map(([n,p]) => `<li><span>${n}</span><span>${p}</span></li>`).join("")
+    + `<li><span>Fecha</span><span>${fecha} · ${$("#franja").value}</span></li>`
+    + `<li class="tot"><span>Total</span><span>${q.desde ? "desde " : ""}${clp(q.total)}</span></li>`;
+  $("#okWa").href = waURL(msg);
+  const dlg = $("#okModal");
+  if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
 });
+$("#okClose").addEventListener("click", () => $("#okModal").close());
+$("#okModal").addEventListener("click", e => { if (e.target === e.currentTarget) e.currentTarget.close(); });
 render();
 
 /* Aparición suave al hacer scroll (contenido visible por defecto) */
