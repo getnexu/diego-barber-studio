@@ -18,10 +18,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Pinyon+Script&family=Jost:wght@300;400;500;600&display=swap">
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
 <style>
 /* Layout: estudio de noche — poste 3D en latón y cristal a la derecha del hero, carta de precios como placas de oro inclinables, mármol negro con vetas doradas */
 :root{
@@ -65,7 +61,7 @@ h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0;te
 .mono{font-family:var(--display);font-weight:800;font-size:1.55rem;line-height:1;letter-spacing:-.06em}
 .brand small{display:block;font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-2)}
 .brand b{font-family:var(--script);font-weight:400;font-size:1.5rem;line-height:1}
-.nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase}
+.nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase}
 .nav ul a{text-decoration:none;color:var(--ink-2);transition:color .2s}
 .nav ul a:hover{color:var(--gold-hi)}
 .nav .btn{min-height:42px;padding:.55rem 1.1rem;font-size:.72rem}
@@ -279,6 +275,25 @@ legend span{color:var(--gold);margin-right:.6rem}
 @media (max-width:700px){.bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(130px,40vw,190px)}
   .tile.t1{grid-column:1/3;grid-row:auto/span 2}.tile.t2{grid-column:1/3;grid-row:auto}.tile.t3,.tile.t4{grid-column:auto;grid-row:auto/span 2}.tile.t5{grid-column:1/3;grid-row:auto}}
 
+/* Reseñas */
+.reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+@media (max-width:900px){.reviews{grid-template-columns:minmax(0,1fr)}}
+.review{display:flex;flex-direction:column;gap:1rem;margin:0;padding:1.8rem 1.6rem;border:1px solid var(--line);border-radius:4px;background:linear-gradient(160deg,rgba(30,26,21,.78),rgba(16,14,12,.68) 60%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.stars{display:flex;gap:3px;color:var(--gold)}
+.stars svg{width:16px;height:16px}
+.review blockquote{margin:0;font-size:1rem;font-weight:300;line-height:1.7;color:var(--ink)}
+.review figcaption{margin-top:auto;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;font-size:.82rem}
+.review figcaption b{font-family:var(--display);letter-spacing:.06em;font-weight:600}
+.review figcaption span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
+.reviews.empty{grid-template-columns:minmax(0,1fr)}
+.review-empty{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:1.4rem 2rem;padding:2rem;border:1px dashed rgba(212,175,90,.45);border-radius:4px;background:rgba(16,14,12,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.review-empty .stars svg{width:22px;height:22px}
+.review-empty h3{font-size:1.15rem;letter-spacing:.08em;text-transform:uppercase}
+.review-empty p{margin:.4rem 0 0;color:var(--ink-2);font-weight:300;max-width:52ch}
+.review-empty .row{display:flex;flex-wrap:wrap;gap:.6rem}
+.review-empty .btn{min-height:44px;font-size:.72rem;padding:.6rem 1rem}
+@media (max-width:900px){.review-empty{grid-template-columns:minmax(0,1fr)}}
+
 /* Preguntas frecuentes */
 .faq{border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line)}
@@ -324,6 +339,10 @@ footer .brand b{font-size:1.3rem}
   .plate,.btn,.btn-gold::after,.style img{transition:none}
 }
 </style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <style>[hidden]{display:none!important}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px)}</style>
 </head>
 <body>
@@ -353,10 +372,11 @@ footer .brand b{font-size:1.3rem}
       <span><b class="metal">Diego Barber</b><small>Studio</small></span>
     </a>
     <ul>
-      <li><a href="#precios">Servicios</a></li>
-      <li><a href="#trabajos">Galería</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#trabajos">Cortes</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#preguntas">Preguntas</a></li>
+      <li><a href="#cotizador">Cotizar</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
       <li><a href="#visitanos">Contacto</a></li>
     </ul>
     <a class="btn btn-gold js-book" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cal"/></svg>Reservar</a>
@@ -397,52 +417,6 @@ footer .brand b{font-size:1.3rem}
     </div>
     <div class="chips cat-tabs" id="catTabs" role="group" aria-label="Filtrar servicios por categoría"></div>
     <div class="plates" id="plates"></div>
-  </div>
-</section>
-
-<section id="cotizador">
-  <div class="wrap">
-    <div class="head q-head reveal">
-      <div><p class="eyebrow">Cotizador</p><h2><span class="metal">Arma tu visita</span></h2>
-        <p class="q-lede">Elige tu corte y los adicionales. El total se calcula al momento y lo envías armado por WhatsApp para confirmar tu hora.</p></div>
-      <div class="stage" aria-label="Poste de barbería en 3D. Arrástralo para girarlo.">
-        <canvas id="pole3d" aria-hidden="true"></canvas>
-        <div class="pole-css" id="poleFallback" hidden></div>
-        <p class="hint"><svg aria-hidden="true"><use href="#i-drag"/></svg>Arrastra para girar</p>
-    </div>
-    </div>
-    <form class="quote" id="quote" novalidate>
-      <div>
-        <fieldset>
-          <legend><span>I</span>Corte</legend>
-          <div class="opts" id="opts-corte"></div>
-        </fieldset>
-        <fieldset>
-          <legend><span>II</span>Adicionales</legend>
-          <div class="opts" id="opts-extra"></div>
-        </fieldset>
-        <fieldset>
-          <legend><span>III</span>Tus datos</legend>
-          <div class="fields">
-            <div class="field"><label for="nombre">Nombre</label><input id="nombre" autocomplete="given-name" placeholder="Ej: Benjamín"></div>
-            <div class="field"><label for="fecha">Fecha</label><input id="fecha" type="date"></div>
-            <div class="field"><label for="franja">Horario</label>
-              <select id="franja"><option>Mañana</option><option selected>Tarde</option><option>Noche</option></select>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-      <aside class="ticket" aria-live="polite">
-        <h3>Tu cotización</h3>
-        <p class="sub">Diego Barber</p>
-        <ul id="lines"></ul>
-        <div class="total"><span>Total</span><output id="total" class="metal" for="quote">$0</output></div>
-        <button class="btn btn-wa" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp</button>
-        <a class="btn btn-line pay" id="payBtn" href="#" target="_blank" rel="noopener" hidden>Pagar abono con Mercado Pago</a>
-        <p class="err" id="err" hidden>Elige al menos un servicio para cotizar.</p>
-        <span class="alt">¿Prefieres agenda online? <a class="js-book" href="#" target="_blank" rel="noopener">Reserva aquí</a></span>
-      </aside>
-    </form>
   </div>
 </section>
 
@@ -493,6 +467,62 @@ footer .brand b{font-size:1.3rem}
       <p>Luces hexagonales, mármol negro y cada herramienta en su lugar. Así te recibe Diego.</p>
     </div>
     <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<section id="cotizador">
+  <div class="wrap">
+    <div class="head q-head reveal">
+      <div><p class="eyebrow">Cotizador</p><h2><span class="metal">Arma tu visita</span></h2>
+        <p class="q-lede">Elige tu corte y los adicionales. El total se calcula al momento y lo envías armado por WhatsApp para confirmar tu hora.</p></div>
+      <div class="stage" aria-label="Poste de barbería en 3D. Arrástralo para girarlo.">
+        <canvas id="pole3d" aria-hidden="true"></canvas>
+        <div class="pole-css" id="poleFallback" hidden></div>
+        <p class="hint"><svg aria-hidden="true"><use href="#i-drag"/></svg>Arrastra para girar</p>
+    </div>
+    </div>
+    <form class="quote" id="quote" novalidate>
+      <div>
+        <fieldset>
+          <legend><span>I</span>Corte</legend>
+          <div class="opts" id="opts-corte"></div>
+        </fieldset>
+        <fieldset>
+          <legend><span>II</span>Adicionales</legend>
+          <div class="opts" id="opts-extra"></div>
+        </fieldset>
+        <fieldset>
+          <legend><span>III</span>Tus datos</legend>
+          <div class="fields">
+            <div class="field"><label for="nombre">Nombre</label><input id="nombre" autocomplete="given-name" placeholder="Ej: Benjamín"></div>
+            <div class="field"><label for="fecha">Fecha</label><input id="fecha" type="date"></div>
+            <div class="field"><label for="franja">Horario</label>
+              <select id="franja"><option>Mañana</option><option selected>Tarde</option><option>Noche</option></select>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <aside class="ticket" aria-live="polite">
+        <h3>Tu cotización</h3>
+        <p class="sub">Diego Barber</p>
+        <ul id="lines"></ul>
+        <div class="total"><span>Total</span><output id="total" class="metal" for="quote">$0</output></div>
+        <button class="btn btn-wa" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp</button>
+        <a class="btn btn-line pay" id="payBtn" href="#" target="_blank" rel="noopener" hidden>Pagar abono con Mercado Pago</a>
+        <p class="err" id="err" hidden>Elige al menos un servicio para cotizar.</p>
+        <span class="alt">¿Prefieres agenda online? <a class="js-book" href="#" target="_blank" rel="noopener">Reserva aquí</a></span>
+      </aside>
+    </form>
+  </div>
+</section>
+
+<section id="resenas">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><p class="eyebrow">Lo que dicen los clientes</p><h2><span class="metal">Reseñas</span></h2></div>
+      <p>Opiniones reales de quienes se cortan con Diego.</p>
+    </div>
+    <div class="reviews reveal" id="reviews"></div>
   </div>
 </section>
 
@@ -713,6 +743,10 @@ const CONFIG = {
   /* Botón «Cómo llegar». Cuando Diego tenga ficha en Google Maps, pega aquí su link. */
   mapa: "https://www.google.com/maps/search/?api=1&query=Diego+Barber+Studio+Quilicura",
 };
+/* Reseñas: solo reseñas reales, copiadas tal cual y con permiso del cliente.
+   Ej: {nombre:"Matías R.", texto:"Excelente degradado, súper detallista.", estrellas:5, fuente:"Google"}
+   Si el arreglo está vacío, la sección invita a dejar la primera reseña. */
+const RESENAS = [];
 /* Galería: fotos de clientes de Diego. Cada foto tiene título (t), categorías (cat) e imagen (foto).
    Para agregar una: {t:"Mid fade", cat:["Fade"], foto:"fotos/mid-fade.jpg"} */
 const TRABAJOS = FOTOS;
@@ -752,6 +786,24 @@ $("#plates").innerHTML = PRECIOS.map(s => `
       <button type="button" class="add" data-id="${s.id}" aria-label="Agregar ${s.n} al cotizador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar</button>
     </div>
   </article>`).join("");
+
+/* Reseñas */
+(function reviews(){
+  const star = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2.6 2.9 6 6.5.9-4.7 4.6 1.1 6.5L12 17.5l-5.8 3.1 1.1-6.5L2.6 9.5l6.5-.9Z"/></svg>';
+  const stars = n => `<div class="stars" role="img" aria-label="${n} de 5 estrellas">${star.repeat(n)}</div>`;
+  const box = $("#reviews");
+  if (RESENAS.length){
+    box.innerHTML = RESENAS.map(r => `<figure class="review">${stars(r.estrellas || 5)}<blockquote>“${r.texto}”</blockquote><figcaption><b>${r.nombre}</b>${r.fuente ? `<span>${r.fuente}</span>` : ""}</figcaption></figure>`).join("");
+  } else {
+    box.classList.add("empty");
+    box.innerHTML = `<div class="review-empty">${stars(5)}
+      <div><h3>¿Ya te cortaste con Diego?</h3><p>Cuéntanos cómo te fue. Tu reseña ayuda a otros a elegir su barbero.</p></div>
+      <div class="row">
+        <a class="btn btn-gold" href="${CONFIG.mapa}" target="_blank" rel="noopener">Dejar reseña en Google</a>
+        <a class="btn btn-wa" href="${waURL("Hola Diego, quiero dejarte una reseña: ")}" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Por WhatsApp</a>
+      </div></div>`;
+  }
+})();
 
 /* Catálogo: filtros por categoría */
 const SCATS = ["Todos", ...new Set(PRECIOS.map(s => s.cat))];
