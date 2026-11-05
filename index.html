@@ -289,6 +289,13 @@ legend span{color:var(--gold);margin-right:.6rem}
 .review figcaption b{font-family:var(--display);letter-spacing:.06em;font-weight:600}
 .review figcaption span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
 .reviews.empty{grid-template-columns:minmax(0,1fr)}
+.review-sum{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.2rem;padding:1.2rem 1.4rem;border:1px solid var(--line);border-radius:4px;background:rgba(16,14,12,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.review-sum strong{font-family:var(--display);font-size:2.4rem;line-height:1}
+.review-sum > span{color:var(--ink-2);font-size:.85rem}
+.review-sum .row{margin-left:auto;display:flex;flex-wrap:wrap;gap:.6rem}
+.review-sum .btn{min-height:44px;font-size:.72rem;padding:.6rem 1rem}
+.review .avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;margin-right:.6rem;flex:none}
+.review figcaption b{margin-right:auto}
 .review-empty{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:1.4rem 2rem;padding:2rem;border:1px dashed rgba(212,175,90,.45);border-radius:4px;background:rgba(16,14,12,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .review-empty .stars svg{width:22px;height:22px}
 .review-empty h3{font-size:1.15rem;letter-spacing:.08em;text-transform:uppercase}
@@ -814,7 +821,7 @@ const CONFIG = {
   mapa: "https://www.google.com/maps/dir/?api=1&destination=-33.3616498,-70.7524638",
   waze: "https://waze.com/ul?ll=-33.3616498,-70.7524638&navigate=yes",
   /* Cuando Diego tenga ficha en Google Maps, pega aquí el link para dejar reseñas. */
-  resenaGoogle: "https://www.google.com/maps/search/?api=1&query=Lo+Marcoleta+610,+Quilicura,+Chile",
+  resenaGoogle: "https://www.google.com/maps/search/?api=1&query=-33.3616498,-70.7524638",
 };
 /* Reseñas: solo reseñas reales, copiadas tal cual y con permiso del cliente.
    Ej: {nombre:"Matías R.", texto:"Excelente degradado, súper detallista.", estrellas:5, fuente:"Google"}
@@ -864,19 +871,30 @@ $("#plates").innerHTML = PRECIOS.map(s => `
 /* Reseñas */
 (function reviews(){
   const star = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2.6 2.9 6 6.5.9-4.7 4.6 1.1 6.5L12 17.5l-5.8 3.1 1.1-6.5L2.6 9.5l6.5-.9Z"/></svg>';
-  const stars = n => `<div class="stars" role="img" aria-label="${n} de 5 estrellas">${star.repeat(n)}</div>`;
+  const stars = n => `<div class="stars" role="img" aria-label="${n} de 5 estrellas">${star.repeat(Math.round(n))}</div>`;
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const box = $("#reviews");
-  if (RESENAS.length){
-    box.innerHTML = RESENAS.map(r => `<figure class="review">${stars(r.estrellas || 5)}<blockquote>“${r.texto}”</blockquote><figcaption><b>${r.nombre}</b>${r.fuente ? `<span>${r.fuente}</span>` : ""}</figcaption></figure>`).join("");
-  } else {
-    box.classList.add("empty");
-    box.innerHTML = `<div class="review-empty">${stars(5)}
+  const card = r => `<figure class="review">${stars(r.estrellas || 5)}<blockquote>“${esc(r.texto)}”</blockquote>
+    <figcaption>${r.foto ? `<img class="avatar" src="${esc(r.foto)}" alt="" width="32" height="32" loading="lazy" referrerpolicy="no-referrer">` : ""}<b>${esc(r.nombre)}</b><span>${esc(r.fuente || (r.hace ? "Google · " + r.hace : "Google"))}</span></figcaption></figure>`;
+  const invite = (escribir) => `<div class="review-empty">${stars(5)}
       <div><h3>¿Ya te cortaste con Diego?</h3><p>Cuéntanos cómo te fue. Tu reseña ayuda a otros a elegir su barbero.</p></div>
       <div class="row">
-        <a class="btn btn-gold" href="${CONFIG.resenaGoogle}" target="_blank" rel="noopener">Dejar reseña en Google</a>
+        <a class="btn btn-gold" href="${escribir || CONFIG.resenaGoogle}" target="_blank" rel="noopener">Dejar reseña en Google</a>
         <a class="btn btn-wa" href="${waURL("Hola Diego, quiero dejarte una reseña: ")}" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Por WhatsApp</a>
       </div></div>`;
+  function show(list, g){
+    if (!list.length){ box.classList.add("empty"); box.innerHTML = invite(g && g.escribir); return; }
+    box.classList.remove("empty");
+    const head = g && g.rating ? `<div class="review-sum"><strong class="metal">${g.rating.toFixed(1).replace(".", ",")}</strong>${stars(g.rating)}<span>${g.total} reseñas en Google</span>
+      <span class="row">${g.verTodas ? `<a class="btn btn-line" href="${esc(g.verTodas)}" target="_blank" rel="noopener">Ver todas</a>` : ""}<a class="btn btn-gold" href="${esc(g.escribir)}" target="_blank" rel="noopener">Dejar reseña</a></span></div>` : "";
+    box.innerHTML = head + list.slice(0, 6).map(card).join("");
   }
+  show(RESENAS);
+  /* Reseñas de Google: las trae /api/resenas en el sitio publicado */
+  fetch("/api/resenas").then(r => r.ok ? r.json() : null).then(g => {
+    if (g && g.reviews && g.reviews.length) show(g.reviews.concat(RESENAS), g);
+    else if (g && g.escribir && !RESENAS.length) show([], g);
+  }).catch(() => {});
 })();
 
 /* Catálogo: filtros por categoría */
