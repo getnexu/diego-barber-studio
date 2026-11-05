@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0A0908">
+<title>Panel · Diego Barber Studio</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+/* Panel de administración: tablero sobrio en negro y dorado, pensado para el celular */
+:root{
+  color-scheme:dark;
+  --bg:#0E0C0A; --panel:#17140F; --panel-2:#1F1B15; --line:rgba(212,175,90,.18); --line-2:rgba(212,175,90,.4);
+  --ink:#EFE8D8; --ink-2:#A89F8C; --gold:#D4AF5A; --gold-hi:#F3DE9C; --on-gold:#17120A;
+  --ok:#5FC08A; --warn:#E6B84D; --bad:#E5806F;
+  --gold-metal:linear-gradient(175deg,#FBEFC4 0%,#E2C377 38%,#9C7A2C 52%,#D9B867 70%,#F6E3A6 100%);
+  --display:"Cinzel","Trajan Pro",Georgia,serif; --body:"Jost","Avenir Next","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;min-height:100dvh}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(10,9,8,.72),rgba(10,9,8,.8)),url("/img/marmol.webp") center/cover no-repeat}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px;border-radius:4px}
+img{max-width:100%}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;letter-spacing:.04em}
+.metal{background:var(--gold-metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:44px;padding:.55rem 1rem;border-radius:3px;border:0;font:inherit;font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;color:var(--ink);background:transparent;box-shadow:inset 0 0 0 1px var(--line-2);transition:background .2s,box-shadow .2s}
+.btn:hover{box-shadow:inset 0 0 0 1px var(--gold)}
+.btn-gold{background:var(--gold-metal);color:var(--on-gold);box-shadow:none}
+.btn-ok{background:rgba(95,192,138,.15);box-shadow:inset 0 0 0 1px rgba(95,192,138,.5);color:#BDEBD0}
+.btn-bad{color:#F3B7AC;box-shadow:inset 0 0 0 1px rgba(229,128,111,.45)}
+.btn-ghost{box-shadow:none;color:var(--ink-2);padding-inline:.6rem}
+.btn-ghost:hover{color:var(--ink);box-shadow:none}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn svg{width:16px;height:16px}
+.icon-btn{width:40px;min-height:40px;padding:0}
+
+label{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:.3rem}
+input,select,textarea{width:100%;min-height:44px;padding:.55rem .75rem;border-radius:3px;border:1px solid var(--line);background:rgba(10,9,8,.6);color:var(--ink);font:inherit;font-size:16px}
+textarea{min-height:70px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+.check{display:flex;align-items:center;gap:.55rem;min-height:44px;font-size:.88rem;color:var(--ink);text-transform:none;letter-spacing:0;margin:0;cursor:pointer}
+.check input{width:20px;min-height:20px;height:20px;accent-color:var(--gold)}
+
+/* Inicio de sesión */
+.auth{min-height:100dvh;display:grid;place-items:center;padding:24px 16px}
+.auth-card{width:min(400px,100%);padding:2rem 1.5rem;border:1px solid var(--line-2);border-radius:6px;background:rgba(23,20,15,.9);backdrop-filter:blur(8px)}
+.auth-card img{display:block;width:110px;height:auto;margin:0 auto 1rem}
+.auth-card h1{text-align:center;font-size:1.3rem;margin-bottom:.3rem}
+.auth-card .sub{text-align:center;color:var(--ink-2);margin:0 0 1.4rem;font-size:.9rem}
+.auth-card form{display:grid;gap:.9rem}
+.auth-card .btn{width:100%}
+.auth-links{display:flex;justify-content:space-between;gap:1rem;margin-top:1rem;font-size:.85rem}
+.auth-links button{background:none;border:0;color:var(--gold-hi);font:inherit;cursor:pointer;padding:.4rem 0;text-decoration:underline;text-underline-offset:3px}
+.msg{margin:0;padding:.7rem .85rem;border-radius:3px;font-size:.88rem}
+.msg.err{background:rgba(229,128,111,.12);color:#F3B7AC;border:1px solid rgba(229,128,111,.35)}
+.msg.ok{background:rgba(95,192,138,.12);color:#BDEBD0;border:1px solid rgba(95,192,138,.35)}
+
+/* Barra superior */
+.top{position:sticky;top:0;z-index:20;background:rgba(14,12,10,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:.8rem;min-height:60px;padding-top:env(safe-area-inset-top,0px)}
+.top img{height:36px;width:auto}
+.top .who{flex:1;min-width:0}
+.top .who b{display:block;font-family:var(--display);font-size:.95rem;letter-spacing:.06em}
+.top .who span{display:block;font-size:.75rem;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tabs{display:flex;gap:.3rem;overflow-x:auto;padding:.6rem 0;scrollbar-width:none}
+.tab{flex:none;display:inline-flex;align-items:center;gap:.5rem;min-height:42px;padding:.45rem 1rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink-2);font:inherit;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--gold-metal);color:var(--on-gold);border-color:transparent}
+.badge{min-width:22px;height:22px;padding:0 .4rem;border-radius:999px;background:var(--bad);color:#1A0B08;font-size:.72rem;font-weight:600;display:inline-grid;place-items:center;letter-spacing:0}
+main{padding-block:1.2rem 5rem}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:.8rem 1rem;margin-bottom:1rem}
+.sec-head h2{font-size:1.35rem}
+.sec-head p{margin:.2rem 0 0;color:var(--ink-2);font-size:.88rem;max-width:52ch}
+.filters{display:flex;gap:.4rem;flex-wrap:wrap}
+.filters button{min-height:38px;padding:.35rem .85rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink-2);font:inherit;font-size:.78rem;cursor:pointer}
+.filters button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold-hi)}
+.empty{padding:2rem 1rem;text-align:center;color:var(--ink-2);border:1px dashed var(--line);border-radius:4px}
+.loading{color:var(--ink-2);padding:1rem 0}
+
+.card{border:1px solid var(--line);border-radius:4px;background:rgba(23,20,15,.88);padding:1rem}
+.list{display:grid;gap:.8rem}
+
+/* Reseñas */
+.rv{display:grid;gap:.6rem}
+.rv-top{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .8rem}
+.rv-top b{font-size:1rem}
+.rv-meta{font-size:.78rem;color:var(--ink-2)}
+.pill{display:inline-flex;align-items:center;min-height:24px;padding:0 .55rem;border-radius:999px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+.pill.pend{background:rgba(230,184,77,.14);color:var(--warn);border:1px solid rgba(230,184,77,.4)}
+.pill.pub{background:rgba(95,192,138,.12);color:var(--ok);border:1px solid rgba(95,192,138,.4)}
+.pill.off{background:rgba(168,159,140,.12);color:var(--ink-2);border:1px solid var(--line)}
+.stars{color:var(--gold);letter-spacing:2px;font-size:1rem}
+.rv p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.actions{display:flex;flex-wrap:wrap;gap:.5rem}
+.confirm{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;color:#F3B7AC}
+
+/* Galería */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:.8rem}
+.ph{display:flex;flex-direction:column;gap:.6rem;padding:.7rem}
+.ph .thumb{position:relative;aspect-ratio:260/318;border-radius:3px;overflow:hidden;background:#000}
+.ph .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.ph.off .thumb img{opacity:.35}
+.ph .thumb .pill{position:absolute;left:.5rem;top:.5rem}
+.ph .row{display:flex;align-items:center;justify-content:space-between;gap:.3rem}
+.saved{font-size:.72rem;color:var(--ok);min-height:1em}
+.hint{font-size:.75rem;color:var(--ink-2);margin-top:.25rem}
+
+/* Subir foto */
+.up{display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:1rem;align-items:start;margin-bottom:1rem;border-color:var(--line-2)}
+.up .thumb{aspect-ratio:260/318;border-radius:3px;overflow:hidden;background:#000}
+.up .thumb canvas{width:100%;height:100%;display:block}
+.up form{display:grid;gap:.8rem}
+@media (max-width:560px){.up{grid-template-columns:minmax(0,1fr)}.up .thumb{max-width:220px}}
+
+/* Precios */
+.svc{display:grid;gap:.8rem}
+.svc.off{opacity:.65}
+.svc .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.svc .grid .full{grid-column:1/-1}
+@media (max-width:560px){.svc .grid{grid-template-columns:minmax(0,1fr)}}
+.svc-head{display:flex;align-items:center;gap:.6rem}
+.svc-head h3{flex:1;font-size:1rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.money{position:relative}
+.money span{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:var(--ink-2)}
+.money input{padding-left:1.6rem;font-variant-numeric:tabular-nums}
+.incl{display:flex;flex-wrap:wrap;gap:.2rem 1rem}
+.svc .foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;border-top:1px solid var(--line);padding-top:.8rem}
+.dirty{font-size:.75rem;color:var(--warn)}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;z-index:50;max-width:calc(100vw - 32px);padding:.75rem 1rem;border-radius:4px;background:var(--panel-2);border:1px solid var(--line-2);box-shadow:0 18px 40px -12px rgba(0,0,0,.8);font-size:.9rem;transition:opacity .25s,transform .25s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.err{border-color:rgba(229,128,111,.6)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- Inicio de sesión -->
+<section class="auth" id="authView" hidden>
+  <div class="auth-card">
+    <img src="/img/logo.webp" alt="Diego Barber" width="640" height="541">
+    <h1><span class="metal" id="authTitle">Panel privado</span></h1>
+    <p class="sub" id="authSub">Entra para revisar reseñas, galería y precios.</p>
+    <form id="authForm" novalidate>
+      <div><label for="email">Correo</label><input id="email" type="email" autocomplete="email" required></div>
+      <div id="passWrap"><label for="pass">Contraseña</label><input id="pass" type="password" autocomplete="current-password" minlength="8" required></div>
+      <div id="pass2Wrap" hidden><label for="pass2">Repite la contraseña</label><input id="pass2" type="password" autocomplete="new-password" minlength="8"></div>
+      <p class="msg" id="authMsg" role="alert" hidden></p>
+      <button class="btn btn-gold" type="submit" id="authBtn">Entrar</button>
+    </form>
+    <div class="auth-links">
+      <button type="button" id="toSignup">Crear cuenta</button>
+      <button type="button" id="toReset">Olvidé mi contraseña</button>
+    </div>
+  </div>
+</section>
+
+<!-- Sin permiso -->
+<section class="auth" id="denyView" hidden>
+  <div class="auth-card">
+    <img src="/img/logo.webp" alt="Diego Barber" width="640" height="541">
+    <h1><span class="metal">Sin acceso</span></h1>
+    <p class="sub">Tu cuenta <b id="denyEmail"></b> todavía no está autorizada para este panel. Pide a Get Nexus que la habilite y vuelve a entrar.</p>
+    <button class="btn" type="button" id="denyOut" style="width:100%">Salir</button>
+  </div>
+</section>
+
+<!-- Panel -->
+<div id="appView" hidden>
+  <header class="top">
+    <div class="wrap">
+      <img src="/img/logo-monograma.webp" alt="" width="29" height="44">
+      <div class="who"><b><span class="metal">Panel Diego Barber</span></b><span id="whoEmail"></span></div>
+      <a class="btn btn-ghost" href="/" target="_blank" rel="noopener">Ver página</a>
+      <button class="btn btn-ghost" type="button" id="logout">Salir</button>
+    </div>
+    <div class="wrap">
+      <nav class="tabs" role="tablist" aria-label="Secciones del panel">
+        <button class="tab" role="tab" data-tab="resenas" aria-selected="true">Reseñas <span class="badge" id="pendBadge" hidden>0</span></button>
+        <button class="tab" role="tab" data-tab="galeria" aria-selected="false">Galería</button>
+        <button class="tab" role="tab" data-tab="precios" aria-selected="false">Precios</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Reseñas -->
+    <section id="tab-resenas" role="tabpanel">
+      <div class="sec-head">
+        <div><h2><span class="metal">Reseñas</span></h2><p>Las reseñas nuevas quedan pendientes. Publícalas para que aparezcan en la página.</p></div>
+        <div class="filters" id="rvFilters">
+          <button type="button" data-f="pend" aria-pressed="true">Pendientes</button>
+          <button type="button" data-f="pub" aria-pressed="false">Publicadas</button>
+          <button type="button" data-f="all" aria-pressed="false">Todas</button>
+        </div>
+      </div>
+      <div class="list" id="rvList"><p class="loading">Cargando reseñas…</p></div>
+    </section>
+
+    <!-- Galería -->
+    <section id="tab-galeria" role="tabpanel" hidden>
+      <div class="sec-head">
+        <div><h2><span class="metal">Galería</span></h2><p>Sube fotos de tus cortes, cambia su nombre y categoría, ordénalas u ocúltalas. Los cambios se guardan solos.</p></div>
+        <label class="btn btn-gold" for="newPhoto" style="margin:0;letter-spacing:.12em;color:var(--on-gold)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar foto
+        </label>
+        <input id="newPhoto" type="file" accept="image/*" hidden>
+      </div>
+      <div class="card up" id="upCard" hidden>
+        <div class="thumb"><canvas id="upCanvas" width="600" height="734"></canvas></div>
+        <form id="upForm" novalidate>
+          <div><label for="upTitle">Nombre del corte</label><input id="upTitle" maxlength="60" placeholder="Ej: Mid fade" required></div>
+          <div><label for="upCats">Categorías</label><input id="upCats" list="catList" placeholder="Ej: Fade, Niños"><p class="hint">Separa con comas. Así se agrupan en los filtros de la página.</p></div>
+          <p class="msg err" id="upMsg" hidden></p>
+          <div class="actions"><button class="btn btn-gold" type="submit" id="upBtn">Subir foto</button><button class="btn btn-ghost" type="button" id="upCancel">Cancelar</button></div>
+        </form>
+      </div>
+      <datalist id="catList"></datalist>
+      <div class="gal" id="galList"><p class="loading">Cargando fotos…</p></div>
+    </section>
+
+    <!-- Precios -->
+    <section id="tab-precios" role="tabpanel" hidden>
+      <div class="sec-head">
+        <div><h2><span class="metal">Precios</span></h2><p>Edita tus servicios y toca Guardar. Los cortes aparecen como opción principal en el cotizador; los adicionales se suman.</p></div>
+        <button class="btn btn-gold" type="button" id="addSvc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar servicio</button>
+      </div>
+      <datalist id="svcCats"></datalist>
+      <div class="list" id="svcList"><p class="loading">Cargando precios…</p></div>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/dist/umd/supabase.js"></script>
+<script>
+const CFG = {
+  url: "https://qkzlbeyvvjwekbbdnjik.supabase.co",
+  key: "sb_publishable_kBVAMaJPuEhOrGio_r3KWA_Au2pmrWj",
+  negocio: "diego-barber-studio",
+  bucket: "landing",
+};
+const sb = supabase.createClient(CFG.url, CFG.key);
+const $ = s => document.querySelector(s);
+const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const clp = n => "$" + Math.round(n || 0).toLocaleString("es-CL");
+const ICONOS = [["s-fade","Degradado"],["s-sci","Tijeras"],["s-combo","Corte + barba"],["s-visos","Color / visos"],["s-beard","Barba"],["s-brow","Cejas"]];
+function toast(t, err){ const el = $("#toast"); el.textContent = t; el.classList.toggle("err", !!err); el.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => el.classList.remove("show"), 2600); }
+const show = id => ["authView","denyView","appView"].forEach(v => $("#" + v).hidden = v !== id);
+
+/* ---------- Sesión ---------- */
+let mode = "login";
+function setMode(m){
+  mode = m; $("#authMsg").hidden = true;
+  const t = { login:["Panel privado","Entra para revisar reseñas, galería y precios.","Entrar"],
+              signup:["Crear cuenta","Usa el correo que autorizó Get Nexus.","Crear cuenta"],
+              reset:["Recuperar acceso","Te enviaremos un correo para crear una contraseña nueva.","Enviar correo"],
+              newpass:["Nueva contraseña","Escribe tu nueva contraseña.","Guardar contraseña"] }[m];
+  $("#authTitle").textContent = t[0]; $("#authSub").textContent = t[1]; $("#authBtn").textContent = t[2];
+  $("#passWrap").hidden = m === "reset";
+  $("#pass2Wrap").hidden = !(m === "signup" || m === "newpass");
+  $("#email").parentElement.hidden = m === "newpass";
+  $("#pass").autocomplete = m === "login" ? "current-password" : "new-password";
+  $("#toSignup").textContent = m === "login" ? "Crear cuenta" : "Ya tengo cuenta";
+  $("#toReset").hidden = m !== "login";
+}
+const authMsg = (t, ok) => { const m = $("#authMsg"); m.textContent = t; m.className = "msg " + (ok ? "ok" : "err"); m.hidden = false; };
+$("#toSignup").onclick = () => setMode(mode === "login" ? "signup" : "login");
+$("#toReset").onclick = () => setMode("reset");
+$("#authForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const email = $("#email").value.trim().toLowerCase(), pass = $("#pass").value, pass2 = $("#pass2").value;
+  if (mode !== "newpass" && !/^\S+@\S+\.\S+$/.test(email)) return authMsg("Escribe un correo válido.");
+  if (mode !== "reset" && pass.length < 8) return authMsg("La contraseña debe tener al menos 8 caracteres.");
+  if ((mode === "signup" || mode === "newpass") && pass !== pass2) return authMsg("Las contraseñas no coinciden.");
+  const btn = $("#authBtn"); btn.disabled = true;
+  try {
+    if (mode === "login"){
+      const { error } = await sb.auth.signInWithPassword({ email, password: pass });
+      if (error) throw new Error(/Invalid login/i.test(error.message) ? "Correo o contraseña incorrectos." : /confirm/i.test(error.message) ? "Primero confirma tu correo: revisa tu bandeja de entrada." : error.message);
+    } else if (mode === "signup"){
+      const { data, error } = await sb.auth.signUp({ email, password: pass, options: { emailRedirectTo: location.origin + "/admin" } });
+      if (error) throw error;
+      if (!data.session){ authMsg("Te enviamos un correo para confirmar tu cuenta. Ábrelo y luego entra aquí.", true); setMode("login"); $("#authMsg").hidden = false; }
+    } else if (mode === "reset"){
+      const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + "/admin" });
+      if (error) throw error;
+      authMsg("Listo. Revisa tu correo y sigue el enlace para crear una contraseña nueva.", true);
+    } else if (mode === "newpass"){
+      const { error } = await sb.auth.updateUser({ password: pass });
+      if (error) throw error;
+      toast("Contraseña actualizada"); await start();
+    }
+  } catch (err) { authMsg(err.message || "No se pudo completar. Inténtalo de nuevo."); }
+  finally { btn.disabled = false; }
+});
+const salir = async () => { await sb.auth.signOut(); setMode("login"); show("authView"); };
+$("#logout").onclick = salir; $("#denyOut").onclick = salir;
+
+let recovering = false;
+sb.auth.onAuthStateChange((ev, session) => {
+  if (ev === "PASSWORD_RECOVERY"){ recovering = true; setMode("newpass"); show("authView"); }
+  else if (ev === "SIGNED_IN" && !recovering) start();
+});
+
+async function start(){
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session){ setMode("login"); show("authView"); return; }
+  if (recovering) return;
+  const { data, error } = await sb.rpc("landing_reclamar_admin");
+  const negocios = (data || []).map(x => typeof x === "string" ? x : x.landing_reclamar_admin);
+  if (error || !negocios.includes(CFG.negocio)){ $("#denyEmail").textContent = session.user.email; show("denyView"); return; }
+  $("#whoEmail").textContent = session.user.email;
+  show("appView");
+  if (!start.loaded){ start.loaded = true; loadResenas(); loadGaleria(); loadPrecios(); }
+}
+
+/* ---------- Pestañas ---------- */
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+  document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", x === t));
+  ["resenas","galeria","precios"].forEach(id => $("#tab-" + id).hidden = id !== t.dataset.tab);
+}));
+
+/* ---------- Reseñas ---------- */
+let resenas = [], rvFiltro = "pend";
+async function loadResenas(){
+  const { data, error } = await sb.from("resenas_landing").select("id,nombre,estrellas,texto,servicio,aprobado,created_at").eq("negocio", CFG.negocio).order("created_at", { ascending: false });
+  if (error){ $("#rvList").innerHTML = `<p class="msg err">No se pudieron cargar las reseñas: ${esc(error.message)}</p>`; return; }
+  resenas = data; drawResenas();
+}
+function drawResenas(){
+  const pend = resenas.filter(r => !r.aprobado).length;
+  $("#pendBadge").textContent = pend; $("#pendBadge").hidden = !pend;
+  const list = resenas.filter(r => rvFiltro === "all" || (rvFiltro === "pend" ? !r.aprobado : r.aprobado));
+  if (!list.length){ $("#rvList").innerHTML = `<p class="empty">${rvFiltro === "pend" ? "No hay reseñas pendientes." : "No hay reseñas aquí todavía."}</p>`; return; }
+  $("#rvList").innerHTML = list.map(r => `<article class="card rv" data-id="${r.id}">
+    <div class="rv-top"><span class="stars" aria-label="${r.estrellas} de 5">${"★".repeat(r.estrellas)}<span style="opacity:.25">${"★".repeat(5 - r.estrellas)}</span></span>
+      <b>${esc(r.nombre)}</b><span class="pill ${r.aprobado ? "pub" : "pend"}">${r.aprobado ? "Publicada" : "Pendiente"}</span></div>
+    <div class="rv-meta">${[r.servicio, new Date(r.created_at).toLocaleString("es-CL", { dateStyle: "medium", timeStyle: "short" })].filter(Boolean).map(esc).join(" · ")}</div>
+    <p>${esc(r.texto)}</p>
+    <div class="actions">${r.aprobado ? `<button class="btn" data-act="hide">Ocultar</button>` : `<button class="btn btn-ok" data-act="pub">Publicar</button>`}
+      <button class="btn btn-bad" data-act="del">Borrar</button></div></article>`).join("");
+}
+$("#rvFilters").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return;
+  rvFiltro = b.dataset.f; $("#rvFilters").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); drawResenas(); });
+$("#rvList").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-act]"); if (!b) return;
+  const card = b.closest("[data-id]"), id = card.dataset.id, act = b.dataset.act;
+  if (act === "del"){ b.parentElement.innerHTML = `<span class="confirm">¿Borrar esta reseña?</span><button class="btn btn-bad" data-act="del-ok">Sí, borrar</button><button class="btn btn-ghost" data-act="cancel">No</button>`; return; }
+  if (act === "cancel"){ drawResenas(); return; }
+  b.disabled = true;
+  if (act === "del-ok"){
+    const { error } = await sb.from("resenas_landing").delete().eq("id", id);
+    if (error) return toast("No se pudo borrar: " + error.message, true);
+    resenas = resenas.filter(r => r.id !== id); toast("Reseña borrada");
+  } else {
+    const aprobado = act === "pub";
+    const { error } = await sb.from("resenas_landing").update({ aprobado }).eq("id", id);
+    if (error) return toast("No se pudo guardar: " + error.message, true);
+    resenas.find(r => r.id === id).aprobado = aprobado; toast(aprobado ? "Reseña publicada en la página" : "Reseña ocultada");
+  }
+  drawResenas();
+});
+
+/* ---------- Galería ---------- */
+let fotos = [];
+const parseCats = s => [...new Set(String(s).split(",").map(x => x.trim()).filter(Boolean).map(x => x[0].toUpperCase() + x.slice(1)))].slice(0, 6);
+async function loadGaleria(){
+  const { data, error } = await sb.from("landing_galeria").select("*").eq("negocio", CFG.negocio).order("orden");
+  if (error){ $("#galList").innerHTML = `<p class="msg err">No se pudo cargar la galería: ${esc(error.message)}</p>`; return; }
+  fotos = data; drawGaleria();
+}
+function drawGaleria(){
+  $("#catList").innerHTML = [...new Set(fotos.flatMap(f => f.categorias))].map(c => `<option value="${esc(c)}">`).join("");
+  if (!fotos.length){ $("#galList").innerHTML = `<p class="empty">Todavía no hay fotos. Toca “Agregar foto”.</p>`; return; }
+  $("#galList").innerHTML = fotos.map((f, i) => `<article class="card ph${f.visible ? "" : " off"}" data-id="${f.id}">
+    <div class="thumb"><img src="${esc(f.imagen_url)}" alt="${esc(f.titulo)}" loading="lazy">${f.visible ? "" : `<span class="pill off">Oculta</span>`}</div>
+    <div><label for="t-${f.id}">Nombre</label><input id="t-${f.id}" data-f="titulo" value="${esc(f.titulo)}" maxlength="60"></div>
+    <div><label for="c-${f.id}">Categorías</label><input id="c-${f.id}" data-f="categorias" list="catList" value="${esc(f.categorias.join(", "))}"></div>
+    <label class="check"><input type="checkbox" data-f="visible"${f.visible ? " checked" : ""}> Mostrar en la página</label>
+    <div class="row">
+      <span><button class="btn icon-btn" data-act="up" aria-label="Mover antes"${i ? "" : " disabled"}>↑</button> <button class="btn icon-btn" data-act="down" aria-label="Mover después"${i < fotos.length - 1 ? "" : " disabled"}>↓</button></span>
+      <span class="saved" aria-live="polite"></span>
+      <button class="btn btn-bad icon-btn" data-act="del" aria-label="Borrar foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></button>
+    </div></article>`).join("");
+}
+async function saveFoto(id, patch, card){
+  const { error } = await sb.from("landing_galeria").update(patch).eq("id", id);
+  if (error) return toast("No se pudo guardar: " + error.message, true);
+  Object.assign(fotos.find(f => f.id === id), patch);
+  const s = card && card.querySelector(".saved"); if (s){ s.textContent = "Guardado ✓"; setTimeout(() => s.textContent = "", 1800); }
+}
+$("#galList").addEventListener("change", e => {
+  const el = e.target, card = el.closest("[data-id]"); if (!card || !el.dataset.f) return;
+  const id = card.dataset.id, f = el.dataset.f;
+  if (f === "titulo"){ const v = el.value.trim(); if (v.length < 2) return toast("El nombre necesita al menos 2 letras", true); saveFoto(id, { titulo: v }, card); }
+  if (f === "categorias"){ const v = parseCats(el.value); el.value = v.join(", "); saveFoto(id, { categorias: v }, card); }
+  if (f === "visible"){ saveFoto(id, { visible: el.checked }, card).then(drawGaleria); }
+});
+$("#galList").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-act]"); if (!b) return;
+  const card = b.closest("[data-id]"), id = card.dataset.id, i = fotos.findIndex(f => f.id === id);
+  if (b.dataset.act === "up" || b.dataset.act === "down"){
+    const j = b.dataset.act === "up" ? i - 1 : i + 1; if (j < 0 || j >= fotos.length) return;
+    [fotos[i], fotos[j]] = [fotos[j], fotos[i]];
+    fotos.forEach((f, k) => f.orden = k + 1);
+    drawGaleria();
+    const res = await Promise.all([fotos[i], fotos[j]].map(f => sb.from("landing_galeria").update({ orden: f.orden }).eq("id", f.id)));
+    if (res.some(r => r.error)) toast("No se pudo guardar el orden", true); else toast("Orden guardado");
+  }
+  if (b.dataset.act === "del"){
+    b.closest(".row").innerHTML = `<span class="confirm">¿Borrar foto?</span><button class="btn btn-bad" data-act="del-ok">Sí</button><button class="btn btn-ghost" data-act="cancel">No</button>`;
+  }
+  if (b.dataset.act === "cancel") drawGaleria();
+  if (b.dataset.act === "del-ok"){
+    const f = fotos[i];
+    const { error } = await sb.from("landing_galeria").delete().eq("id", id);
+    if (error) return toast("No se pudo borrar: " + error.message, true);
+    const marker = `/storage/v1/object/public/${CFG.bucket}/`;
+    if (f.imagen_url.includes(marker)) await sb.storage.from(CFG.bucket).remove([decodeURIComponent(f.imagen_url.split(marker)[1])]);
+    fotos.splice(i, 1); drawGaleria(); toast("Foto borrada");
+  }
+});
+
+/* Subir foto: se recorta y comprime en el celular antes de subirla */
+let upBlob = null;
+$("#newPhoto").addEventListener("change", async e => {
+  const file = e.target.files[0]; e.target.value = ""; if (!file) return;
+  try {
+    const bmp = await createImageBitmap(file, { imageOrientation: "from-image" });
+    const W = 600, H = 734, r = W / H, c = $("#upCanvas"), x = c.getContext("2d");
+    let sw = bmp.width, sh = bmp.height, sx = 0, sy = 0;
+    if (sw / sh > r){ sw = sh * r; sx = (bmp.width - sw) / 2; } else { sh = sw / r; sy = (bmp.height - sh) * .35; }
+    x.drawImage(bmp, sx, sy, sw, sh, 0, 0, W, H);
+    upBlob = await new Promise(res => c.toBlob(b => res(b), "image/webp", .82));
+    if (!upBlob || upBlob.type !== "image/webp") upBlob = await new Promise(res => c.toBlob(b => res(b), "image/jpeg", .85));
+    $("#upCard").hidden = false; $("#upMsg").hidden = true; $("#upTitle").value = ""; $("#upCats").value = ""; $("#upTitle").focus();
+  } catch (err) { toast("No se pudo leer la imagen. Prueba con otra foto.", true); }
+});
+$("#upCancel").onclick = () => { $("#upCard").hidden = true; upBlob = null; };
+$("#upForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const titulo = $("#upTitle").value.trim(), categorias = parseCats($("#upCats").value);
+  const msg = t => { $("#upMsg").textContent = t; $("#upMsg").hidden = false; };
+  if (titulo.length < 2) return msg("Escribe el nombre del corte.");
+  if (!upBlob) return msg("Elige una foto.");
+  const btn = $("#upBtn"); btn.disabled = true; btn.textContent = "Subiendo…";
+  try {
+    const ext = upBlob.type === "image/webp" ? "webp" : "jpg";
+    const path = `${CFG.negocio}/galeria/${crypto.randomUUID()}.${ext}`;
+    const up = await sb.storage.from(CFG.bucket).upload(path, upBlob, { contentType: upBlob.type, cacheControl: "31536000" });
+    if (up.error) throw up.error;
+    const url = sb.storage.from(CFG.bucket).getPublicUrl(path).data.publicUrl;
+    const orden = fotos.reduce((m, f) => Math.max(m, f.orden), 0) + 1;
+    const { data, error } = await sb.from("landing_galeria").insert({ negocio: CFG.negocio, titulo, categorias, imagen_url: url, orden }).select().single();
+    if (error){ await sb.storage.from(CFG.bucket).remove([path]); throw error; }
+    fotos.push(data); drawGaleria(); $("#upCard").hidden = true; upBlob = null; toast("Foto agregada a la galería");
+  } catch (err) { msg("No se pudo subir: " + (err.message || "inténtalo de nuevo")); }
+  finally { btn.disabled = false; btn.textContent = "Subir foto"; }
+});
+
+/* ---------- Precios ---------- */
+let svcs = [];
+const slug = t => String(t).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "servicio";
+async function loadPrecios(){
+  const { data, error } = await sb.from("landing_precios").select("*").eq("negocio", CFG.negocio).order("orden");
+  if (error){ $("#svcList").innerHTML = `<p class="msg err">No se pudieron cargar los precios: ${esc(error.message)}</p>`; return; }
+  svcs = data; drawPrecios();
+}
+function svcCard(s, i){
+  const extras = svcs.filter(x => x.tipo === "extra" && x.id !== s.id && x.clave);
+  return `<article class="card svc${s.activo ? "" : " off"}" data-id="${s.id || "nuevo"}">
+    <div class="svc-head"><h3>${esc(s.nombre || "Servicio nuevo")}</h3>
+      <button class="btn icon-btn" data-act="up" aria-label="Mover antes"${i && s.id ? "" : " disabled"}>↑</button>
+      <button class="btn icon-btn" data-act="down" aria-label="Mover después"${s.id && i < svcs.length - 1 ? "" : " disabled"}>↓</button></div>
+    <div class="grid">
+      <div><label>Nombre</label><input data-f="nombre" value="${esc(s.nombre)}" maxlength="60"></div>
+      <div><label>Precio</label><div class="money"><span>$</span><input data-f="precio" type="number" inputmode="numeric" min="0" step="500" value="${s.precio ?? ""}"></div></div>
+      <div class="full"><label>Descripción</label><input data-f="descripcion" value="${esc(s.descripcion)}" maxlength="160" placeholder="Ej: Incluye perfilado de cejas"></div>
+      <div><label>Tipo</label><select data-f="tipo"><option value="corte"${s.tipo === "corte" ? " selected" : ""}>Corte (opción principal)</option><option value="extra"${s.tipo === "extra" ? " selected" : ""}>Adicional (se suma)</option></select></div>
+      <div><label>Categoría</label><input data-f="categoria" list="svcCats" value="${esc(s.categoria)}" maxlength="40"></div>
+      <div><label>Ícono</label><select data-f="icono">${ICONOS.map(([v, n]) => `<option value="${v}"${s.icono === v ? " selected" : ""}>${n}</option>`).join("")}</select></div>
+      <div><label>Etiqueta destacada</label><input data-f="etiqueta" value="${esc(s.etiqueta)}" maxlength="24" placeholder="Ej: Más pedido (opcional)"></div>
+      <div class="full" ${s.tipo === "corte" && extras.length ? "" : "hidden"} data-incl><label>Incluye sin costo</label><div class="incl">${extras.map(x => `<label class="check"><input type="checkbox" data-incl="${esc(x.clave)}"${(s.incluye || []).includes(x.clave) ? " checked" : ""}> ${esc(x.nombre)}</label>`).join("")}</div></div>
+      <label class="check"><input type="checkbox" data-f="desde"${s.desde ? " checked" : ""}> Mostrar como “desde”</label>
+      <label class="check"><input type="checkbox" data-f="activo"${s.activo ? " checked" : ""}> Mostrar en la página</label>
+    </div>
+    <div class="foot"><span class="dirty" hidden>Cambios sin guardar</span><span></span>
+      <span class="actions"><button class="btn btn-bad" data-act="del">${s.id ? "Borrar" : "Descartar"}</button><button class="btn btn-gold" data-act="save">Guardar</button></span></div>
+  </article>`;
+}
+function drawPrecios(){
+  $("#svcCats").innerHTML = [...new Set(svcs.map(s => s.categoria).filter(Boolean))].map(c => `<option value="${esc(c)}">`).join("");
+  $("#svcList").innerHTML = svcs.length ? svcs.map(svcCard).join("") : `<p class="empty">No hay servicios. Toca “Agregar servicio”.</p>`;
+}
+$("#addSvc").onclick = () => {
+  if (svcs.some(s => !s.id)) return toast("Primero guarda el servicio nuevo", true);
+  svcs.push({ id: null, nombre: "", descripcion: "", precio: null, desde: false, categoria: "Cortes", tipo: "corte", icono: "s-sci", etiqueta: "", incluye: [], activo: true, orden: svcs.reduce((m, s) => Math.max(m, s.orden), 0) + 1 });
+  drawPrecios(); const cards = $("#svcList").querySelectorAll(".svc"); const last = cards[cards.length - 1];
+  last.scrollIntoView({ behavior: "smooth", block: "center" }); last.querySelector('[data-f="nombre"]').focus();
+};
+$("#svcList").addEventListener("input", e => { const card = e.target.closest(".svc"); if (card) card.querySelector(".dirty").hidden = false;
+  if (e.target.dataset.f === "tipo") card.querySelector("[data-incl]").hidden = e.target.value !== "corte"; });
+$("#svcList").addEventListener("change", e => { const card = e.target.closest(".svc"); if (card) card.querySelector(".dirty").hidden = false;
+  if (e.target.dataset.f === "tipo") card.querySelector("[data-incl]").hidden = e.target.value !== "corte"; });
+$("#svcList").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-act]"); if (!b) return;
+  const card = b.closest(".svc"), i = [...$("#svcList").children].indexOf(card), s = svcs[i];
+  const act = b.dataset.act;
+  if (act === "save"){
+    const v = f => card.querySelector(`[data-f="${f}"]`);
+    const row = { nombre: v("nombre").value.trim(), descripcion: v("descripcion").value.trim(), precio: parseInt(v("precio").value, 10),
+      tipo: v("tipo").value, categoria: v("categoria").value.trim() || "Servicios", icono: v("icono").value,
+      etiqueta: v("etiqueta").value.trim() || null, desde: v("desde").checked, activo: v("activo").checked,
+      incluye: v("tipo").value === "corte" ? [...card.querySelectorAll("[data-incl]:checked")].map(x => x.dataset.incl).filter(Boolean) : [] };
+    if (row.nombre.length < 2) return toast("Escribe el nombre del servicio", true);
+    if (!Number.isFinite(row.precio) || row.precio < 0) return toast("Escribe un precio válido (solo números)", true);
+    b.disabled = true;
+    let res;
+    if (s.id) res = await sb.from("landing_precios").update({ ...row, updated_at: new Date().toISOString() }).eq("id", s.id).select().single();
+    else {
+      let clave = slug(row.nombre), k = 2; while (svcs.some(x => x.clave === clave)) clave = `${slug(row.nombre).slice(0, 36)}-${k++}`;
+      res = await sb.from("landing_precios").insert({ ...row, clave, negocio: CFG.negocio, orden: s.orden }).select().single();
+    }
+    b.disabled = false;
+    if (res.error) return toast("No se pudo guardar: " + res.error.message, true);
+    svcs[i] = res.data; drawPrecios(); toast(`${res.data.nombre} guardado: ${clp(res.data.precio)}`);
+  }
+  if (act === "del"){
+    if (!s.id){ svcs.splice(i, 1); drawPrecios(); return; }
+    b.parentElement.innerHTML = `<span class="confirm">¿Borrar “${esc(s.nombre)}”? Si solo quieres esconderlo, desmarca “Mostrar en la página”.</span><button class="btn btn-bad" data-act="del-ok">Sí, borrar</button><button class="btn btn-ghost" data-act="cancel">No</button>`;
+  }
+  if (act === "cancel") drawPrecios();
+  if (act === "del-ok"){
+    const { error } = await sb.from("landing_precios").delete().eq("id", s.id);
+    if (error) return toast("No se pudo borrar: " + error.message, true);
+    svcs.splice(i, 1);
+    const quitar = svcs.filter(x => (x.incluye || []).includes(s.clave));
+    for (const x of quitar){ x.incluye = x.incluye.filter(c => c !== s.clave); await sb.from("landing_precios").update({ incluye: x.incluye }).eq("id", x.id); }
+    drawPrecios(); toast("Servicio borrado");
+  }
+  if ((act === "up" || act === "down") && s.id){
+    const j = act === "up" ? i - 1 : i + 1; if (j < 0 || j >= svcs.length || !svcs[j].id) return;
+    [svcs[i], svcs[j]] = [svcs[j], svcs[i]];
+    svcs.forEach((x, k) => x.orden = k + 1);
+    drawPrecios();
+    const res = await Promise.all([svcs[i], svcs[j]].map(x => sb.from("landing_precios").update({ orden: x.orden }).eq("id", x.id)));
+    if (res.some(r => r.error)) toast("No se pudo guardar el orden", true); else toast("Orden guardado");
+  }
+});
+
+start();
+</script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /reserva-exitosa
+Disallow: /admin
 
 Sitemap: https://diegobarberstudio.cl/sitemap.xml

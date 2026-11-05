@@ -891,8 +891,8 @@ const RESENAS_DB = {
 };
 /* Galería: fotos de clientes de Diego. Cada foto tiene título (t), categorías (cat) e imagen (foto).
    Para agregar una: {t:"Mid fade", cat:["Fade"], foto:"fotos/mid-fade.jpg"} */
-const TRABAJOS = FOTOS;
-const PRECIOS = [
+let TRABAJOS = FOTOS;
+let PRECIOS = [
   {id:"degradado",  n:"Corte degradado", d:"Incluye perfilado de cejas + 1 línea de diseño a elección", p:12000, ico:"s-fade",  tag:"Más pedido", tipo:"corte", cat:"Cortes", incl:["cejas"]},
   {id:"clasico",    n:"Corte clásico",   d:"Tijera y máquina, terminación prolija",                       p:10000, ico:"s-sci",   tipo:"corte", cat:"Cortes"},
   {id:"cortebarba", n:"Corte + barba",   d:"Incluye perfilado de cejas",                                  p:16000, ico:"s-combo", tipo:"corte", cat:"Cortes", incl:["barba","cejas"]},
@@ -919,6 +919,7 @@ const words = ["Mid Fade","Burst Fade","Corte clásico","Barba","Visos","Color",
 $("#track").innerHTML = [...words, ...words].map(w => `<span>${w}</span>`).join("");
 
 /* Placas de precio */
+function renderCatalog(){
 $("#plates").innerHTML = PRECIOS.map(s => `
   <article class="plate${s.tag ? " feat" : ""}" data-cat="${s.cat}">
     ${s.tag ? `<span class="tag">${s.tag}</span>` : ""}
@@ -929,6 +930,24 @@ $("#plates").innerHTML = PRECIOS.map(s => `
       <button type="button" class="add" data-id="${s.id}" aria-label="Agregar ${s.n} al cotizador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar</button>
     </div>
   </article>`).join("");
+const SCATS = ["Todos", ...new Set(PRECIOS.map(s => s.cat))];
+$("#catTabs").innerHTML = SCATS.map((c, i) => `<button type="button" class="chip" data-c="${c}" aria-pressed="${i === 0}">${c}<span>${c === "Todos" ? PRECIOS.length : PRECIOS.filter(s => s.cat === c).length}</span></button>`).join("");
+if (matchMedia("(hover: hover) and (pointer: fine)").matches && !reduce) {
+  document.querySelectorAll(".plate").forEach(el => {
+    el.addEventListener("pointermove", e => {
+      const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      el.classList.add("live");
+      el.style.setProperty("--ry", ((x - .5) * 16).toFixed(2) + "deg");
+      el.style.setProperty("--rx", ((.5 - y) * 14).toFixed(2) + "deg");
+      el.style.setProperty("--gx", (x * 100) + "%"); el.style.setProperty("--gy", (y * 100) + "%");
+    });
+    el.addEventListener("pointerleave", () => { el.classList.remove("live"); el.style.setProperty("--rx","0deg"); el.style.setProperty("--ry","0deg"); });
+  });
+}
+const sv = $("#rvServicio");
+if (sv){ sv.length = 1; sv.insertAdjacentHTML("beforeend", PRECIOS.map(p => `<option>${p.n}</option>`).join("") + "<option>Otro</option>"); }
+}
+renderCatalog();
 
 /* Reseñas */
 (function reviews(){
@@ -981,7 +1000,7 @@ $("#plates").innerHTML = PRECIOS.map(s => `
   row.addEventListener("mouseleave", () => paint(nota));
   row.addEventListener("keydown", e => { if (e.key === "ArrowRight" || e.key === "ArrowLeft"){ e.preventDefault(); nota = Math.min(5, Math.max(1, nota + (e.key === "ArrowRight" ? 1 : -1))); paint(nota); row.querySelector(`[data-n="${nota}"]`).focus(); } });
   paint(nota);
-  $("#rvServicio").insertAdjacentHTML("beforeend", PRECIOS.map(p => `<option>${p.n}</option>`).join("") + "<option>Otro</option>");
+  { const sv = $("#rvServicio"); sv.length = 1; sv.insertAdjacentHTML("beforeend", PRECIOS.map(p => `<option>${p.n}</option>`).join("") + "<option>Otro</option>"); }
   const txt = $("#rvTexto"), msg = $("#rvMsg");
   txt.addEventListener("input", () => { $("#rvCount").textContent = `${txt.value.length}/600`; });
   const fail = t => { msg.textContent = t; msg.hidden = false; };
@@ -1008,8 +1027,6 @@ $("#plates").innerHTML = PRECIOS.map(s => `
 })();
 
 /* Catálogo: filtros por categoría */
-const SCATS = ["Todos", ...new Set(PRECIOS.map(s => s.cat))];
-$("#catTabs").innerHTML = SCATS.map((c, i) => `<button type="button" class="chip" data-c="${c}" aria-pressed="${i === 0}">${c}<span>${c === "Todos" ? PRECIOS.length : PRECIOS.filter(s => s.cat === c).length}</span></button>`).join("");
 $("#catTabs").addEventListener("click", e => {
   const b = e.target.closest(".chip"); if (!b) return;
   $("#catTabs").querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === b));
@@ -1034,19 +1051,6 @@ $("#plates").addEventListener("click", e => {
   }
   const tk = $(".ticket"); tk.classList.remove("pulse"); void tk.offsetWidth; if (!reduce) tk.classList.add("pulse");
 });
-
-if (matchMedia("(hover: hover) and (pointer: fine)").matches && !reduce) {
-  document.querySelectorAll(".plate").forEach(el => {
-    el.addEventListener("pointermove", e => {
-      const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      el.classList.add("live");
-      el.style.setProperty("--ry", ((x - .5) * 16).toFixed(2) + "deg");
-      el.style.setProperty("--rx", ((.5 - y) * 14).toFixed(2) + "deg");
-      el.style.setProperty("--gx", (x * 100) + "%"); el.style.setProperty("--gy", (y * 100) + "%");
-    });
-    el.addEventListener("pointerleave", () => { el.classList.remove("live"); el.style.setProperty("--rx","0deg"); el.style.setProperty("--ry","0deg"); });
-  });
-}
 
 /* Mármol negro con vetas doradas (generado) */
 (function marble(){
@@ -1100,8 +1104,9 @@ $("#heroImg").src = FOTO_HERO;
 (function gallery(){
   const ring = $("#ring"), spin = $("#spin"), label = $("#ringLabel"), chips = $("#chips"), prev = $("#prev"), next = $("#next");
   const count = c => c === "Todos" ? TRABAJOS.length : TRABAJOS.filter(t => t.cat.includes(c)).length;
-  const CATS = ["Todos", ...new Set(TRABAJOS.flatMap(t => t.cat))];
-  chips.innerHTML = CATS.map((c, i) => `<button type="button" class="chip" data-c="${c}" aria-pressed="${i === 0}">${c}<span>${count(c)}</span></button>`).join("");
+  const drawChips = () => { const CATS = ["Todos", ...new Set(TRABAJOS.flatMap(t => t.cat))];
+    chips.innerHTML = CATS.map((c, i) => `<button type="button" class="chip" data-c="${c}" aria-pressed="${i === 0}">${c}<span>${count(c)}</span></button>`).join(""); };
+  drawChips();
   let list = [], cards = [], n = 0, step = 0, flat = false, sel = 0, downX = 0;
   let R = 300, ang = 0, vel = 0, base = reduce ? 0 : -9, drag = false, lx = 0, lt = 0, snap = null, pauseUntil = 0, front = -1;
 
@@ -1176,29 +1181,34 @@ $("#heroImg").src = FOTO_HERO;
   }
   new ResizeObserver(layout).observe(ring);
   build("Todos");
+  window.setTrabajos = l => { if (!l.length) return; TRABAJOS = l; drawChips(); build("Todos"); };
 })();
 
 /* Cotizador */
 const opt = (type, name, s, checked) => `
   <div class="opt"><input type="${type}" name="${name}" id="${name}-${s.id}" value="${s.id}"${checked ? " checked" : ""}>
   <label for="${name}-${s.id}"><span class="t"><span>${s.n}</span><em id="pr-${s.id}">${s.p == null ? "" : (s.desde ? "desde " : "") + clp(s.p)}</em></span><span class="s">${s.d || ""}</span></label></div>`;
-const cortes = PRECIOS.filter(s => s.tipo === "corte");
-const extras = PRECIOS.filter(s => s.tipo === "extra");
-$("#opts-corte").innerHTML = cortes.map((s,i) => opt("radio","corte",s,i===0)).join("") + opt("radio","corte",{id:"ninguno",n:"Sin corte",d:"Solo adicionales",p:null},false);
-$("#opts-extra").innerHTML = extras.map(s => opt("checkbox","extra",{...s, n: s.id==="barba" ? "Barba" : s.id==="cejas" ? "Cejas" : s.n},false)).join("");
+let cortes = [], extras = [];
+function renderOpts(){
+  cortes = PRECIOS.filter(s => s.tipo === "corte");
+  extras = PRECIOS.filter(s => s.tipo === "extra");
+  $("#opts-corte").innerHTML = cortes.map((s,i) => opt("radio","corte",s,i===0)).join("") + opt("radio","corte",{id:"ninguno",n:"Sin corte",d:"Solo adicionales",p:null},!cortes.length);
+  $("#opts-extra").innerHTML = extras.map(s => opt("checkbox","extra",{...s, n: s.id==="barba" ? "Barba" : s.id==="cejas" ? "Cejas" : s.n},false)).join("");
+}
+renderOpts();
 
 function cotizar(){
   const cid = document.querySelector('input[name="corte"]:checked').value;
   const corte = PRECIOS.find(s => s.id === cid);
   const incl = corte?.incl || [];
   extras.forEach(e => {
-    const inp = $("#extra-" + e.id), tag = $("#pr-" + e.id);
+    const inp = $("#extra-" + e.id), tag = $("#pr-" + e.id); if (!inp) return;
     const isIn = incl.includes(e.id);
     inp.disabled = isIn; if (isIn) inp.checked = false;
     tag.textContent = isIn ? "Incluido" : (e.desde ? "desde " : "") + clp(e.p);
   });
   const lines = []; let total = 0, desde = false;
-  if (corte){ lines.push([corte.n, clp(corte.p)]); total += corte.p; incl.forEach(id => lines.push([id==="cejas"?"Perfilado de cejas":"Barba", "Incluido", 1])); }
+  if (corte){ lines.push([corte.n, clp(corte.p)]); total += corte.p; incl.forEach(id => { const x = PRECIOS.find(s => s.id === id); lines.push([id==="cejas" ? "Perfilado de cejas" : id==="barba" ? "Barba" : (x ? x.n : id), "Incluido", 1]); }); }
   extras.forEach(e => { if ($("#extra-" + e.id).checked){ lines.push([e.n, (e.desde?"desde ":"") + clp(e.p)]); total += e.p; if (e.desde) desde = true; } });
   return {lines, total, desde, ok: lines.some(l => !l[2])};
 }
@@ -1238,6 +1248,21 @@ $("#quote").addEventListener("submit", e => {
 $("#okClose").addEventListener("click", () => $("#okModal").close());
 $("#okModal").addEventListener("click", e => { if (e.target === e.currentTarget) e.currentTarget.close(); });
 render();
+
+/* Precios y galería administrados desde el panel (/admin) */
+(function datosEnVivo(){
+  const H = { apikey: RESENAS_DB.key }, base = `${RESENAS_DB.url}/rest/v1`, neg = RESENAS_DB.negocio;
+  fetch(`${base}/landing_precios?select=clave,nombre,descripcion,precio,desde,categoria,tipo,icono,etiqueta,incluye&negocio=eq.${neg}&order=orden.asc`, { headers: H })
+    .then(r => r.ok ? r.json() : []).then(rows => {
+      if (!rows.length) return;
+      PRECIOS = rows.map(r => ({ id: r.clave, n: r.nombre, d: r.descripcion, p: r.precio, desde: r.desde, cat: r.categoria, tipo: r.tipo, ico: r.icono, tag: r.etiqueta, incl: r.incluye || [] }));
+      renderCatalog(); renderOpts(); render();
+    }).catch(() => {});
+  fetch(`${base}/landing_galeria?select=titulo,categorias,imagen_url&negocio=eq.${neg}&order=orden.asc`, { headers: H })
+    .then(r => r.ok ? r.json() : []).then(rows => {
+      if (rows.length && window.setTrabajos) window.setTrabajos(rows.map(r => ({ t: r.titulo, cat: r.categorias || [], foto: r.imagen_url })));
+    }).catch(() => {});
+})();
 
 /* Aparición suave al hacer scroll (contenido visible por defecto) */
 if (!reduce && "IntersectionObserver" in window){
