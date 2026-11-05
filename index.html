@@ -279,7 +279,7 @@ legend span{color:var(--gold);margin-right:.6rem}
   .tile.t1{grid-column:1/3;grid-row:auto/span 2}.tile.t2{grid-column:1/3;grid-row:auto}.tile.t3,.tile.t4{grid-column:auto;grid-row:auto/span 2}.tile.t5{grid-column:1/3;grid-row:auto}}
 
 /* Reseñas */
-.reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1.2rem}
 @media (max-width:900px){.reviews{grid-template-columns:minmax(0,1fr)}}
 .review{display:flex;flex-direction:column;gap:1rem;margin:0;padding:1.8rem 1.6rem;border:1px solid var(--line);border-radius:4px;background:linear-gradient(160deg,rgba(30,26,21,.78),rgba(16,14,12,.68) 60%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .stars{display:flex;gap:3px;color:var(--gold)}
@@ -296,6 +296,34 @@ legend span{color:var(--gold);margin-right:.6rem}
 .review-sum .btn{min-height:44px;font-size:.72rem;padding:.6rem 1rem}
 .review .avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;margin-right:.6rem;flex:none}
 .review figcaption b{margin-right:auto}
+.reviews{margin-bottom:1.6rem}
+.rv-write{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:2rem 3rem;align-items:start;padding:2rem;border:1px solid rgba(212,175,90,.4);border-radius:4px;background:linear-gradient(160deg,rgba(30,26,21,.8),rgba(16,14,12,.72) 60%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+@media (max-width:860px){.rv-write{grid-template-columns:minmax(0,1fr);padding:1.5rem 1.2rem}}
+.rv-intro h3{font-size:1.2rem;letter-spacing:.08em;text-transform:uppercase;margin:.9rem 0 .5rem}
+.rv-intro p{margin:0;color:var(--ink-2);font-weight:300;max-width:42ch}
+.rv-intro .stars.big svg{width:22px;height:22px}
+.rv-google{display:inline-block;margin-top:1.1rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-hi)}
+.rv-form{display:flex;flex-direction:column;gap:1rem;min-width:0}
+.rv-stars{margin:0}
+.rv-stars legend{font-family:var(--body);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:.4rem}
+.rv-star-row{display:flex;gap:.2rem}
+.rv-star-row button{width:44px;height:44px;display:grid;place-items:center;padding:0;border:0;background:none;color:rgba(212,175,90,.28);cursor:pointer;transition:color .15s,transform .15s}
+.rv-star-row button svg{width:28px;height:28px}
+.rv-star-row button.on{color:var(--gold)}
+.rv-star-row button:hover{transform:scale(1.12)}
+.rv-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:600px){.rv-fields{grid-template-columns:minmax(0,1fr)}}
+.field textarea{width:100%;min-height:110px;padding:.7rem .85rem;border-radius:3px;border:1px solid var(--line);background:rgba(10,9,8,.55);color:var(--ink);font:inherit;font-size:.95rem;resize:vertical}
+.field textarea:focus{border-color:var(--gold);outline:none}
+.field{position:relative}
+.rv-count{position:absolute;right:.6rem;bottom:.5rem;font-size:.7rem;color:var(--ink-2);font-variant-numeric:tabular-nums;pointer-events:none}
+.rv-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.rv-msg{margin:0;color:#F0A497;font-size:.88rem}
+.rv-form .btn{align-self:flex-start}
+.rv-form .btn[disabled]{opacity:.6;cursor:wait}
+.rv-done{text-align:center;padding:1rem 0}
+.rv-done h3{font-size:1.8rem;text-transform:uppercase;margin:.4rem 0 .5rem}
+.rv-done p{color:var(--ink-2);font-weight:300;margin:0 auto;max-width:38ch}
 .review-empty{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:1.4rem 2rem;padding:2rem;border:1px dashed rgba(212,175,90,.45);border-radius:4px;background:rgba(16,14,12,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .review-empty .stars svg{width:22px;height:22px}
 .review-empty h3{font-size:1.15rem;letter-spacing:.08em;text-transform:uppercase}
@@ -569,7 +597,34 @@ footer .brand b{font-size:1.3rem}
       <div><p class="eyebrow">Lo que dicen los clientes</p><h2><span class="metal">Reseñas</span></h2></div>
       <p>Opiniones reales de quienes se cortan con Diego.</p>
     </div>
-    <div class="reviews reveal" id="reviews"></div>
+    <div class="reviews reveal" id="reviews" hidden></div>
+    <div class="rv-write reveal" id="rvWrite">
+      <div class="rv-intro">
+        <div class="stars big" aria-hidden="true"></div>
+        <h3>¿Ya te cortaste con Diego?</h3>
+        <p>Cuéntanos cómo te fue. Tu reseña ayuda a otros a elegir su barbero y se publica aquí cuando Diego la revisa.</p>
+        <a class="rv-google" id="rvGoogle" href="#" target="_blank" rel="noopener">También puedes dejarla en Google</a>
+      </div>
+      <form class="rv-form" id="rvForm" novalidate>
+        <fieldset class="rv-stars">
+          <legend>Tu nota</legend>
+          <div class="rv-star-row" id="rvStars"></div>
+        </fieldset>
+        <div class="fields rv-fields">
+          <div class="field"><label for="rvNombre">Tu nombre</label><input id="rvNombre" maxlength="60" autocomplete="given-name" placeholder="Ej: Matías R." required></div>
+          <div class="field"><label for="rvServicio">Servicio</label><select id="rvServicio"><option value="">Elige uno (opcional)</option></select></div>
+        </div>
+        <div class="field"><label for="rvTexto">Tu reseña</label><textarea id="rvTexto" rows="4" maxlength="600" placeholder="¿Qué te pareció el corte y la atención?" required></textarea><span class="rv-count" id="rvCount">0/600</span></div>
+        <input class="rv-hp" id="rvWeb" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="rv-msg" id="rvMsg" role="alert" hidden></p>
+        <button class="btn btn-gold" type="submit" id="rvSend">Enviar reseña</button>
+      </form>
+      <div class="rv-done" id="rvDone" hidden>
+        <div class="ok-check" aria-hidden="true"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+        <h3><span class="metal" id="rvDoneTitle">¡Gracias!</span></h3>
+        <p>Tu reseña quedó guardada. Aparecerá en esta sección cuando Diego la apruebe.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -827,6 +882,13 @@ const CONFIG = {
    Ej: {nombre:"Matías R.", texto:"Excelente degradado, súper detallista.", estrellas:5, fuente:"Google"}
    Si el arreglo está vacío, la sección invita a dejar la primera reseña. */
 const RESENAS = [];
+/* Reseñas que dejan los clientes en la página (Supabase · proyecto Getnexus · tabla resenas_landing).
+   Para publicar una: en Supabase, Table Editor → resenas_landing → marcar "aprobado". */
+const RESENAS_DB = {
+  url: "https://qkzlbeyvvjwekbbdnjik.supabase.co",
+  key: "sb_publishable_kBVAMaJPuEhOrGio_r3KWA_Au2pmrWj",
+  negocio: "diego-barber-studio",
+};
 /* Galería: fotos de clientes de Diego. Cada foto tiene título (t), categorías (cat) e imagen (foto).
    Para agregar una: {t:"Mid fade", cat:["Fade"], foto:"fotos/mid-fade.jpg"} */
 const TRABAJOS = FOTOS;
@@ -873,28 +935,76 @@ $("#plates").innerHTML = PRECIOS.map(s => `
   const star = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2.6 2.9 6 6.5.9-4.7 4.6 1.1 6.5L12 17.5l-5.8 3.1 1.1-6.5L2.6 9.5l6.5-.9Z"/></svg>';
   const stars = n => `<div class="stars" role="img" aria-label="${n} de 5 estrellas">${star.repeat(Math.round(n))}</div>`;
   const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const rtf = new Intl.RelativeTimeFormat("es", { numeric: "auto" });
+  const hace = iso => { const d = (Date.now() - new Date(iso)) / 864e5;
+    return d < 1 ? "hoy" : d < 30 ? rtf.format(-Math.round(d), "day") : d < 365 ? rtf.format(-Math.round(d / 30), "month") : rtf.format(-Math.round(d / 365), "year"); };
   const box = $("#reviews");
+  let googleData = null, own = [];
   const card = r => `<figure class="review">${stars(r.estrellas || 5)}<blockquote>“${esc(r.texto)}”</blockquote>
-    <figcaption>${r.foto ? `<img class="avatar" src="${esc(r.foto)}" alt="" width="32" height="32" loading="lazy" referrerpolicy="no-referrer">` : ""}<b>${esc(r.nombre)}</b><span>${esc(r.fuente || (r.hace ? "Google · " + r.hace : "Google"))}</span></figcaption></figure>`;
-  const invite = (escribir) => `<div class="review-empty">${stars(5)}
-      <div><h3>¿Ya te cortaste con Diego?</h3><p>Cuéntanos cómo te fue. Tu reseña ayuda a otros a elegir su barbero.</p></div>
-      <div class="row">
-        <a class="btn btn-gold" href="${escribir || CONFIG.resenaGoogle}" target="_blank" rel="noopener">Dejar reseña en Google</a>
-        <a class="btn btn-wa" href="${waURL("Hola Diego, quiero dejarte una reseña: ")}" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Por WhatsApp</a>
-      </div></div>`;
-  function show(list, g){
-    if (!list.length){ box.classList.add("empty"); box.innerHTML = invite(g && g.escribir); return; }
-    box.classList.remove("empty");
-    const head = g && g.rating ? `<div class="review-sum"><strong class="metal">${g.rating.toFixed(1).replace(".", ",")}</strong>${stars(g.rating)}<span>${g.total} reseñas en Google</span>
-      <span class="row">${g.verTodas ? `<a class="btn btn-line" href="${esc(g.verTodas)}" target="_blank" rel="noopener">Ver todas</a>` : ""}<a class="btn btn-gold" href="${esc(g.escribir)}" target="_blank" rel="noopener">Dejar reseña</a></span></div>` : "";
-    box.innerHTML = head + list.slice(0, 6).map(card).join("");
+    <figcaption>${r.foto ? `<img class="avatar" src="${esc(r.foto)}" alt="" width="32" height="32" loading="lazy" referrerpolicy="no-referrer">` : ""}<b>${esc(r.nombre)}</b><span>${esc(r.fuente)}</span></figcaption></figure>`;
+  function draw(){
+    const g = googleData && googleData.reviews ? googleData.reviews.map(r => ({...r, fuente: "Google" + (r.hace ? " · " + r.hace : "")})) : [];
+    const list = own.concat(g, RESENAS.map(r => ({...r, fuente: r.fuente || "Cliente"})));
+    if (!list.length){ box.hidden = true; return; }
+    const head = googleData && googleData.rating ? `<div class="review-sum"><strong class="metal">${googleData.rating.toFixed(1).replace(".", ",")}</strong>${stars(googleData.rating)}<span>${googleData.total} reseñas en Google</span>
+      <span class="row">${googleData.verTodas ? `<a class="btn btn-line" href="${esc(googleData.verTodas)}" target="_blank" rel="noopener">Ver en Google</a>` : ""}</span></div>` : "";
+    box.innerHTML = head + list.slice(0, 9).map(card).join("");
+    box.hidden = false;
   }
-  show(RESENAS);
-  /* Reseñas de Google: las trae /api/resenas en el sitio publicado */
+  $("#rvWrite .stars.big").innerHTML = star.repeat(5);
+  $("#rvGoogle").href = CONFIG.resenaGoogle;
+  draw();
+
+  /* Reseñas aprobadas de la página */
+  const H = { apikey: RESENAS_DB.key };
+  fetch(`${RESENAS_DB.url}/rest/v1/resenas_landing?select=nombre,estrellas,texto,servicio,created_at&negocio=eq.${RESENAS_DB.negocio}&order=created_at.desc&limit=12`, { headers: H })
+    .then(r => r.ok ? r.json() : []).then(rows => {
+      own = rows.map(r => ({ nombre: r.nombre, estrellas: r.estrellas, texto: r.texto, fuente: [r.servicio, hace(r.created_at)].filter(Boolean).join(" · ") }));
+      draw();
+    }).catch(() => {});
+  /* Reseñas de Google (cuando la ficha esté conectada en Vercel) */
   fetch("/api/resenas").then(r => r.ok ? r.json() : null).then(g => {
-    if (g && g.reviews && g.reviews.length) show(g.reviews.concat(RESENAS), g);
-    else if (g && g.escribir && !RESENAS.length) show([], g);
+    if (!g) return;
+    googleData = g;
+    if (g.escribir) $("#rvGoogle").href = g.escribir;
+    draw();
   }).catch(() => {});
+
+  /* Formulario */
+  let nota = 5;
+  const row = $("#rvStars");
+  row.setAttribute("role", "radiogroup"); row.setAttribute("aria-label", "Nota de 1 a 5 estrellas");
+  row.innerHTML = [1,2,3,4,5].map(n => `<button type="button" role="radio" data-n="${n}" aria-label="${n} estrella${n > 1 ? "s" : ""}">${star}</button>`).join("");
+  const paint = v => row.querySelectorAll("button").forEach(b => { const n = +b.dataset.n; b.classList.toggle("on", n <= v); b.setAttribute("aria-checked", n === nota); b.tabIndex = n === nota ? 0 : -1; });
+  row.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; nota = +b.dataset.n; paint(nota); });
+  row.addEventListener("mouseover", e => { const b = e.target.closest("button"); if (b) paint(+b.dataset.n); });
+  row.addEventListener("mouseleave", () => paint(nota));
+  row.addEventListener("keydown", e => { if (e.key === "ArrowRight" || e.key === "ArrowLeft"){ e.preventDefault(); nota = Math.min(5, Math.max(1, nota + (e.key === "ArrowRight" ? 1 : -1))); paint(nota); row.querySelector(`[data-n="${nota}"]`).focus(); } });
+  paint(nota);
+  $("#rvServicio").insertAdjacentHTML("beforeend", PRECIOS.map(p => `<option>${p.n}</option>`).join("") + "<option>Otro</option>");
+  const txt = $("#rvTexto"), msg = $("#rvMsg");
+  txt.addEventListener("input", () => { $("#rvCount").textContent = `${txt.value.length}/600`; });
+  const fail = t => { msg.textContent = t; msg.hidden = false; };
+  $("#rvForm").addEventListener("submit", async e => {
+    e.preventDefault(); msg.hidden = true;
+    const nombre = $("#rvNombre").value.trim(), texto = txt.value.trim(), servicio = $("#rvServicio").value || null;
+    if ($("#rvWeb").value) return;
+    if (nombre.length < 2) return fail("Escribe tu nombre (al menos 2 letras).");
+    if (texto.length < 10) return fail("Cuéntanos un poco más: la reseña necesita al menos 10 caracteres.");
+    const btn = $("#rvSend"); btn.disabled = true; btn.textContent = "Enviando…";
+    try {
+      const r = await fetch(`${RESENAS_DB.url}/rest/v1/resenas_landing`, { method: "POST",
+        headers: { ...H, "Content-Type": "application/json", Prefer: "return=minimal" },
+        body: JSON.stringify({ negocio: RESENAS_DB.negocio, nombre, estrellas: nota, texto, servicio }) });
+      if (!r.ok) throw new Error(r.status);
+      $("#rvForm").hidden = true;
+      $("#rvDoneTitle").textContent = `¡Gracias, ${nombre.split(" ")[0]}!`;
+      $("#rvDone").hidden = false;
+    } catch (err) {
+      fail("No pudimos enviar tu reseña. Revisa tu conexión e inténtalo de nuevo, o mándala por WhatsApp.");
+      btn.disabled = false; btn.textContent = "Enviar reseña";
+    }
+  });
 })();
 
 /* Catálogo: filtros por categoría */
