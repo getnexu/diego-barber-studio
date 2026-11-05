@@ -287,7 +287,7 @@ $("#authForm").addEventListener("submit", async e => {
       const { error } = await sb.auth.signInWithPassword({ email, password: pass });
       if (error) throw new Error(/Invalid login/i.test(error.message) ? "Correo o contraseña incorrectos." : /confirm/i.test(error.message) ? "Primero confirma tu correo: revisa tu bandeja de entrada." : error.message);
     } else if (mode === "signup"){
-      const { data, error } = await sb.auth.signUp({ email, password: pass, options: { emailRedirectTo: location.origin + "/admin" } });
+      const { data, error } = await sb.auth.signUp({ email, password: pass, options: { emailRedirectTo: location.origin + "/admin", data: { origen: "landing", negocio: CFG.negocio } } });
       if (error) throw error;
       if (!data.session){ authMsg("Te enviamos un correo para confirmar tu cuenta. Ábrelo y luego entra aquí.", true); setMode("login"); $("#authMsg").hidden = false; }
     } else if (mode === "reset"){
