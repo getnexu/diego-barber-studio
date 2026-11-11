@@ -398,6 +398,8 @@ dialog.ok h3{font-size:clamp(1.8rem,6vw,2.4rem);margin:.5rem 0 .6rem;text-transf
 footer{background:rgba(10,9,8,.6);border-top:1px solid var(--line);padding-block:2.2rem;font-size:.78rem;color:var(--ink-2);letter-spacing:.06em}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem}
 footer .brand b{font-size:1.3rem}
+footer .credit{color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(212,175,90,.45);display:inline-block;padding-block:.6rem;margin-block:-.6rem}
+footer .credit:hover,footer .credit:focus-visible{text-decoration-color:currentColor}
 .panel-link{display:inline-flex;align-items:center;gap:.35rem;min-height:44px;padding:0 .4rem;color:var(--ink-2);opacity:.45;text-decoration:none;font-size:.68rem;letter-spacing:.08em;transition:opacity .2s,color .2s}
 .panel-link:hover,.panel-link:focus-visible{opacity:1;color:var(--gold-hi)}
 @media (max-width:1440px){footer .wrap{padding-right:84px}}
@@ -701,7 +703,7 @@ footer .brand b{font-size:1.3rem}
   <div class="wrap">
     <span class="brand"><img class="nav-mono js-mono" alt="" width="29" height="44"><b class="metal">Diego Barber Studio</b></span>
     <span>© 2026 · Precios referenciales en CLP</span>
-    <span>Web por Get Nexus</span>
+    <span>Página web creada por <a class="credit" href="https://getnexus.cl/?utm_source=diegobarberstudio&amp;utm_medium=referral&amp;utm_campaign=credito_footer" target="_blank" rel="noopener" title="GetNexus · Diseño de páginas web y landing pages en Chile">GetNexus</a></span>
     <a class="panel-link" href="/admin" rel="nofollow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Acceso</a>
   </div>
 </footer>
