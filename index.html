@@ -934,7 +934,7 @@ $("#plates").innerHTML = PRECIOS.map(s => `
     <h3>${s.n}</h3><p>${s.d}</p>
     <div class="foot">
       <div class="price">${s.desde ? "<small>desde</small>" : ""}<strong class="metal">${clp(s.p)}</strong></div>
-      <button type="button" class="add" data-id="${s.id}" aria-label="Agregar ${s.n} al cotizador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar</button>
+      <button type="button" class="add" data-id="${s.id}" aria-label="Agendar ${s.n}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Agendar</button>
     </div>
   </article>`).join("");
 const SCATS = ["Todos", ...new Set(PRECIOS.map(s => s.cat))];
