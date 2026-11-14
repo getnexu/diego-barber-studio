@@ -572,16 +572,6 @@ footer .credit:hover,footer .credit:focus-visible{text-decoration-color:currentC
           <legend><span>II</span>Adicionales</legend>
           <div class="opts" id="opts-extra"></div>
         </fieldset>
-        <fieldset>
-          <legend><span>III</span>Tus datos</legend>
-          <div class="fields">
-            <div class="field"><label for="nombre">Nombre</label><input id="nombre" autocomplete="given-name" placeholder="Ej: Benjamín"></div>
-            <div class="field"><label for="fecha">Fecha</label><input id="fecha" type="date"></div>
-            <div class="field"><label for="franja">Horario</label>
-              <select id="franja"><option>Mañana</option><option selected>Tarde</option><option>Noche</option></select>
-            </div>
-          </div>
-        </fieldset>
       </div>
       <aside class="ticket" aria-live="polite">
         <h3>Tu cotización</h3>
@@ -1231,22 +1221,17 @@ $("#quote").addEventListener("submit", e => {
   e.preventDefault();
   const q = cotizar();
   if (!q.ok){ $("#err").hidden = false; return; }
-  const nombre = $("#nombre").value.trim();
-  const f = $("#fecha").value;
-  const fecha = f ? new Date(f + "T12:00").toLocaleDateString("es-CL",{weekday:"long",day:"numeric",month:"long"}) : "a coordinar";
   const msg = [
-    `Hola Diego${nombre ? ", soy " + nombre : ""}. Quiero agendar:`,
+    `Hola Diego. Quiero agendar:`,
     ...q.lines.map(([n,p]) => `• ${n}: ${p}`),
     `Total: ${q.desde ? "desde " : ""}${clp(q.total)}`,
-    `Fecha: ${fecha} · ${$("#franja").value}`,
-    `¿Tienes disponibilidad?`
+    `¿Qué días y horarios tienes disponibles?`
   ].join("\n");
   const a = document.createElement("a"); a.href = waURL(msg); a.target = "_blank"; a.rel = "noopener";
   document.body.appendChild(a); a.click(); a.remove();
   /* Mensaje de reserva enviada */
-  $("#okName").textContent = nombre ? ", " + nombre.split(" ")[0] : "";
+  $("#okName").textContent = "";
   $("#okSum").innerHTML = q.lines.map(([n,p]) => `<li><span>${n}</span><span>${p}</span></li>`).join("")
-    + `<li><span>Fecha</span><span>${fecha} · ${$("#franja").value}</span></li>`
     + `<li class="tot"><span>Total</span><span>${q.desde ? "desde " : ""}${clp(q.total)}</span></li>`;
   $("#okWa").href = waURL(msg);
   const dlg = $("#okModal");
